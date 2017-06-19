@@ -42,7 +42,7 @@
 \title{On the computational complexity of detecting possibilistic locality}
 \author{Andrew W. Simmons}\affiliation{Department of Physics, Imperial College London, SW7 2AZ.}
 \begin{abstract}
-The proofs of quantum nonlocality due to Greenberger, Horne and Zeilinger, and by Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system; in a physical theory, some outcomes of this experiment will be considered possible, others impossible, and an assigment of the values``possible" and ``impossible" to these different outcomes forms a table of possibilities. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
+The proofs of quantum nonlocality due to Greenberger, Horne and Zeilinger, and due to Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system; in a physical theory, some outcomes of this experiment will be considered possible, others impossible, and an assigment of the values ``possible" and ``impossible" to these different outcomes forms a table of possibilities. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
 \end{abstract}
 \maketitle
 
@@ -58,7 +58,7 @@ In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether
 
 In a Bell experiment, two researchers, canonically referred to as Alice and Bob, are placed at spacelike separated locations and perform experiments on a pair of quantum systems that may have interacted in the past. Each of the experimenters can choose between a range of measurement selections: Alice chooses an $a\in A$, Bob chooses a $b\in B$. Alice's measurement can take different outcomes $\{1,2,\dots,l\}$, and Bob's has possible outcomes $\{1,2,\dots,m\}$. If Alice and Bob have $k$ different measurement choices, and each has a maximum of $l$ different measurement outcomes (that is, $l=m$), this is known as a $(2,k,l)$ scenario \cite{Mans2011,Abra2013}: there are two parties, with access to $k$ measurements, each with $l$ different outcomes. In this paper, we will focus on the cases where the measurements available to Alice have a different number of measurement outcomes to those of Bob.
 
-Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. 
+Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. We will refer to each of the measurement settings for Alice and Bob as a measurement row, or measurement column respectively. Within a measurement row or column, each measurement outcome is associated with a subrow or subcolumn. We will sometimes refer to the intersection of a measurement row and a measurement column, containing the outcome probabilities or possibilities for that setting, as a ``context''.
 
 
 
@@ -89,15 +89,6 @@ f(p)=\begin{cases} 1 \quad p\neq 0 \\ 0 \quad p=0, \end{cases}
 \end{equation}
 which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}. The remainder of this article will focus on this possibilistic case. We can consider such a possibility table as a function $T:A\times B \times \{1,\dots, l\}\times \{1,\dots, m\}\rightarrow\{0,1\}$, taking as its input the measurement settings for the two locations alongside a specification of a specific outcome event, and returning whether or not that event is possible or impossible. This can be thought of as a conditional possibilitiy; the possibility of specific measurement outcomes given the choices of measurement setting.
 
-%Need to add:  What does it meant to be quantumly accessible? What's the complexity of finding out if one is? %Define measurement subrow and subcolumn, define "context"
-%use consistent notation for the measurement setting selection
-
-%Mention how such tables can otherwise appear eg Abramsky- otherwise explain why in letter to referee.
-
-\section{The Locality Decision Problem}
-
-%Give specific decomposition of a deterministic grid.
-
 Given a table of probabilities or possibilities as shown above, there are two questions of particular foundational relevance that we might consider: whether the table provides an example of \emph{signalling}, and if not, whether it still provides an example of nonlocality.
 
 The notion of signalling encapsulates the idea that a particular distribution could be used as a resource to superluminally signal information between the two parties. An example of a signalling situation is demonstrated in Figure \ref{sig}. We will focus on \emph{no-signalling} tables, which cannot be used for signalling; all quantum-mechanically accessible tables are of this type. In terms of how our tables are constructed, this means that if a sub-row (sub-column) contains a 1, then it must contain a 1 in every column (row); if a measurement outcome is possible, then it is possible no matter which measurement choice is made at the other site.
@@ -114,6 +105,23 @@ a_1=1&0&0 &1 &1\\ \hline
 \end{figure}
 
 If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can restrict our gaze to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. Following Mansfield and Fritz \cite{Mans2011}, we say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables.
+
+Add example of local table
+
+Add Hardy table.
+%Need to add:  What does it meant to be quantumly accessible? What's the complexity of finding out if one is? define "context"
+%use consistent notation for the measurement setting selection
+
+%Mention how such tables can otherwise appear eg Abramsky- otherwise explain why in letter to referee.
+
+%Put in Hardy's original table- move material from locality decision problem to this background sec
+
+\section{The Locality Decision Problem}
+
+%Give specific decomposition of a deterministic grid.
+
+These considerations motivate a decision problem: does a given a table of possibilities constitute a demonstration of nonlocality?
+
 
 
 \begin{defn}[$(l,m)$-\textsc{PossLoc}]
@@ -457,7 +465,7 @@ We also clearly by symmetry have as permissible clauses the images of the ones a
 
 \section*{Acknowledgements}
 
-I would like to thank Terry Rudolph for multiple helpful discussions, and acknowledge support from Cambridge Quantum Computing Limited and from EPSRC \emph{via} the Centre for Doctoral Training in Controlled Quantum Dynamics.
+I would like to thank Terry Rudolph and Georg Gottlob for multiple helpful discussions, and acknowledge support from Cambridge Quantum Computing Limited and from EPSRC \emph{via} the Centre for Doctoral Training in Controlled Quantum Dynamics.
 
 \bibliography{/Users/andrewsimmons/Documents/Latex/Bib/bibliography}{}
 \bibliographystyle{plain}
