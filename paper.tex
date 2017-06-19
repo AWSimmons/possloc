@@ -97,25 +97,29 @@ which acts as a homomorphism between the normal probability semiring $\mathbb{R}
 
 Given a table of probabilities or possibilities as shown above, there are two questions of particular foundational relevance that we might consider: whether the table provides an example of \emph{signalling}, and if not, whether it still provides an example of nonlocality.
 
-The notion of signalling encapsulates the idea that a particular distribution could be used as a resource to superluminally signal information between the two parties. An example of a signalling situation is demonstrated in Figure \ref{sig}. We will focus on \emph{no-signalling} tables, which cannot be used for signalling; all quantum-mechanically accessible tables are of this type. In terms of how our tables are constructed, this means that if a sub-row contains a 1, then it must contain a 1 in every column; if a measurement outcome is possible, then it is possible no matter which measurement choice is made at the other site.
+The notion of signalling encapsulates the idea that a particular distribution could be used as a resource to superluminally signal information between the two parties. An example of a signalling situation is demonstrated in Figure \ref{sig}. We will focus on \emph{no-signalling} tables, which cannot be used for signalling; all quantum-mechanically accessible tables are of this type. In terms of how our tables are constructed, this means that if a sub-row (sub-column) contains a 1, then it must contain a 1 in every column (row); if a measurement outcome is possible, then it is possible no matter which measurement choice is made at the other site.
 \begin{figure}
 \begin{equation*}
 \begin{array}{c| c c | c c |}
-&&&&\\ \hline
-&1 &1  &1 & 1\\
-&0&0 &1 &1\\ \hline
+&b_1=0&b_1=1&b_2=0&b_2=1\\ \hline
+a_1=0&1 &1  &1 & 1\\
+a_1=1&0&0 &1 &1\\ \hline
 \end{array} 
 \end{equation*}
-\caption{A simple signalling situation.}
+\caption{A simple signalling situation; if Alice sees the outcome $a_1=1$, she knows Bob must have chosen measurement setting $B_2$.}
 \label{sig}
 \end{figure}
 
 If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can restrict our gaze to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. Following Mansfield and Fritz \cite{Mans2011}, we say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables.
 
 
-\begin{defn}[$(j,k)$-\textsc{PossLoc}]
-The $k$-outcome Possibilistic locality decision problem, $(j,k)$-\textsc{PossLoc} is as follows: the problem instance is an element of $\{0,1\}^{j+k+n+m}$, where $j$ and $k$ are the maximum number of measurement outcomes for each measurement on the two subsystems being measured, and $n$ and $m$ are the number of measurements available at each location. This should be thought of as a data table where a 1 indicates a possible outcome and a 0 indicates an impossible outcome. In general, we will take $n=m$ to maintain a single scaling factor; in fact this change is without loss of generality. In the case where $j=k$, we will denote this problem merely $k$-\textsc{PossLoc}. While this is not essential, we will also require that the data tables obey a possibilistic no-signalling principle; this merely streamlines the wording of the theorems. 
+\begin{defn}[$(l,m)$-\textsc{PossLoc}]
+\quad\\
+Instance: a possibilistic table of data represented by a  function $T:A\times B \times \{1,\dots, l\}\times \{1,\dots, m\}\rightarrow\{0,1\}$.
+
+Question: do there exist a set of functions $T_i$, such that the $T_i$ are deterministic, and $T=\sum_i T_i$?
 \end{defn}
+Tihs represents a two-party nonlocality scenario in which Alice has access to measurements with $m$ outcomes, and Bob has access to measurements with $l$ outcomes. We are given a possibility table and asked whether or not it displays nonlocality. In general, we will take $|A|=|B|=n$ to maintain a single scaling factor; in fact this change is without loss of generality. In the case where $l=m$, we will denote this problem merely $l$-\textsc{PossLoc}. While this is not essential, we will also require that the data tables obey the possibilistic no-signalling principle; this merely streamlines the wording of the theorems. 
 \begin{thm} \cite{Mans2011}
 2-\textsc{PossLoc} is in \textbf{P}.
 \end{thm}
