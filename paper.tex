@@ -56,9 +56,9 @@ In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether
 
 \section{Background}
 
-In a Bell experiment, two researchers, canonically referred to as Alice and Bob, are placed at spacelike separated locations and perform experiments on a pair of quantum systems that may have interacted in the past. Each of the experimenters can choose between a range of measurement selections: Alice chooses an $a\in A$, Bob chooses a $b\in B$. Alice's measurement can take different outcomes $\{1,2,\dots,l\}$, and Bob's has possible outcomes $\{1,2,\dots,m\}$. If Alice and Bob have $k$ different measurement choices, and each has a maximum of $l$ different measurement outcomes (that is, $l=m$), this is known as a $(2,k,l)$ scenario \cite{Mans2011}: there are two parties, with access to $k$ measurements, each with $l$ different outcomes.
+In a Bell experiment, two researchers, canonically referred to as Alice and Bob, are placed at spacelike separated locations and perform experiments on a pair of quantum systems that may have interacted in the past. Each of the experimenters can choose between a range of measurement selections: Alice chooses an $a\in A$, Bob chooses a $b\in B$. Alice's measurement can take different outcomes $\{1,2,\dots,l\}$, and Bob's has possible outcomes $\{1,2,\dots,m\}$. If Alice and Bob have $k$ different measurement choices, and each has a maximum of $l$ different measurement outcomes (that is, $l=m$), this is known as a $(2,k,l)$ scenario \cite{Mans2011,Abra2013}: there are two parties, with access to $k$ measurements, each with $l$ different outcomes. In this paper, we will focus on the cases where the measurements available to Alice have a different number of measurement outcomes to those of Bob.
 
-Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}.%Note. Pick consistent way of referring to outcome labelling etc.
+Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. 
 
 
 
@@ -79,7 +79,7 @@ a_2&1&1&1 &1 \\
 a_2'&1&1 &1 &1 \\ \hline
 \end{array} 
 \end{equation*}
-\caption{Probability and Possibility tables for a CHSH experiment. Alice has two available measurements: measurement $A_1$ with outcome $a_1$ and $a_1'$; and measurement $A_2$ with outcomes $a_2$ and $a'_2$. Bob has measurements denoted similarly. Typically, however, we will not label outcomes as the properties we are consider are invariant under relabelling.}
+\caption{Probability and Possibility tables for a CHSH \cite{CHSH1969} experiment. Alice has two available measurements: measurement $A_1$ with outcome $a_1$ and $a_1'$; and measurement $A_2$ with outcomes $a_2$ and $a'_2$. Bob has measurements denoted similarly. Typically, however, we will not label outcomes as the properties we are consider are invariant under relabelling.}
 \label{CHSH}
 \end{figure}
 
@@ -87,17 +87,30 @@ This table of probabilities can be converted into a table of possibilities via a
 \begin{equation}
 f(p)=\begin{cases} 1 \quad p\neq 0 \\ 0 \quad p=0, \end{cases}
 \end{equation}
-which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}.
+which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}. The remainder of this article will focus on this possibilistic case. We can consider such a possibility table as a function $T:A\times B \times \{1,\dots, l\}\times \{1,\dots, m\}\rightarrow\{0,1\}$, taking as its input the measurement settings for the two locations alongside a specification of a specific outcome event, and returning whether or not that event is possible or impossible. This can be thought of as a conditional possibilitiy; the possibility of specific measurement outcomes given the choices of measurement setting.
 
-%Need to add: what is no-signalling. What does it meant to be quantumly accessible? What's the complexity of finding out if one is?
-
-
+%Need to add:  What does it meant to be quantumly accessible? What's the complexity of finding out if one is? %Define measurement subrow and subcolumn, define "context"
+%use consistent notation for the measurement setting selection
 \section{The Locality Decision Problem}
 
 %Give specific decomposition of a deterministic grid.
 
-Given a table of probabilities for a Bell experiment, a question of experimental and foundational relevance is whether or not that table provides an example of quantum nonlocality; that is to say that it cannot be reproduced by a local hidden variable model. A table of probabilities can be transformed into a table of possibilities simply by denoting each nonzero element with a 1 to mark it as possible. On the top of Figure \ref{CHSH}, we see the standard table of probabilities given; below is the corresponding table of possibilities. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines. For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac18$.
+Given a table of probabilities or possibilities as shown above, there are two questions of particular foundational relevance that we might consider: whether the table provides an example of \emph{signalling}, and if not, whether it still provides an example of nonlocality.
 
+The notion of signalling encapsulates the idea that a particular distribution could be used as a resource to superluminally signal information between the two parties. An example of a signalling situation is demonstrated in Figure \ref{sig}. We will focus on \emph{no-signalling} tables, which cannot be used for signalling; all quantum-mechanically accessible tables are of this type. In terms of how our tables are constructed, this means that if a sub-row contains a 1, then it must contain a 1 in every column; if a measurement outcome is possible, then it is possible no matter which measurement choice is made at the other site.
+\begin{figure}
+\begin{equation*}
+\begin{array}{c| c c | c c |}
+&&&&\\ \hline
+&1 &1  &1 & 1\\
+&0&0 &1 &1\\ \hline
+\end{array} 
+\end{equation*}
+\caption{A simple signalling situation.}
+\label{sig}
+\end{figure}
+
+If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can restrict our gaze to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. Following Mansfield and Fritz \cite{Mans2011}, we say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables.
 
 
 \begin{defn}[$(j,k)$-\textsc{PossLoc}]
