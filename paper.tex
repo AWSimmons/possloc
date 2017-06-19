@@ -83,8 +83,18 @@ a_2'&1&1 &1 &1 \\ \hline
 \label{CHSH}
 \end{figure}
 
+This table of probabilities can be converted into a table of possibilities via a \emph{possibilistic collapse}, explored by Abramsky \cite{Abra2013-2}, and by Mansfield and Barbosa \cite{Mans2014}. We apply to the event probabilities, the mapping
+\begin{equation}
+f(p)=\begin{cases} 1 \quad p\neq 0 \\ 0 \quad p=0, \end{cases}
+\end{equation}
+which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}.
+
+%Need to add: what is no-signalling. What does it meant to be quantumly accessible? What's the complexity of finding out if one is?
+
 
 \section{The Locality Decision Problem}
+
+%Give specific decomposition of a deterministic grid.
 
 Given a table of probabilities for a Bell experiment, a question of experimental and foundational relevance is whether or not that table provides an example of quantum nonlocality; that is to say that it cannot be reproduced by a local hidden variable model. A table of probabilities can be transformed into a table of possibilities simply by denoting each nonzero element with a 1 to mark it as possible. On the top of Figure \ref{CHSH}, we see the standard table of probabilities given; below is the corresponding table of possibilities. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines. For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac18$.
 
