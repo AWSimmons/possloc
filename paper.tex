@@ -159,7 +159,7 @@ In 1993, Hardy \cite{Hard1993} demonstrated that the table in Figure \ref{HardyP
 
 %Put in Hardy's original table- move material from locality decision problem to this background sec
 
-\section{The Locality Decision Problem}
+\section{The Locality Decision Problem and Incompleteness of Hardy's Paradox}
 
 %Give specific decomposition of a deterministic grid.
 
@@ -226,7 +226,7 @@ However, this argument is specific to the case in which we have measurements wit
 \end{figure}
 
 
-Figure \ref{steer} shows an equatorial slice of the Bloch sphere, and a set of states of Bob's system to which he can be ``steered'' by Alice. For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
+Figure \ref{steer} shows an equatorial slice of the Bloch sphere, and a set of states of Bob's system to which he can be ``steered'' by Alice. For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. For clarity, the antipodal points to those that Alice can steer Bob to are not shown on in Figure \ref{steer}. Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
 \begin{equation*}
 \begin{array}{ c  | c c | c c c| c c c|}\
   & b&b^\perp& A^\perp &B^\perp&x^\perp& A^\perp &B^\perp&y^\perp \\ \hline
@@ -260,8 +260,8 @@ We see that in some sense this can be thought of as a generalisation of Hardy's 
 
 It is easy to see that $(j,k)$-\textsc{PossLoc} is in \textbf{NP}; to show that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. It is clear to see that such a witness is only polynomially-sized, and can be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky \emph{et al} showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
 
-\begin{defn}[$r$-\textsc{Robust} decision problems]	
-Following Abramsky \emph{et al}, we shall define, for a decision problem \textsc{P}, the problem $r$-\textsc{Robust P} to be the decision problem that, given an instance of \textsc{P}, asks whether or not every assignment of $r$ variables in the problem can be extended to a satisfying assignment of the problem.
+\begin{defn}[$r$-\textsc{Robust} satisfiability problems]	
+Following Abramsky \emph{et al}, we shall define, for a satisfiability decision problem \textsc{P}, the problem $r$-\textsc{Robust P} to be the decision problem that, given an instance of \textsc{P}, asks whether or not every assignment of $r$ variables in the problem that do not directly cause one of the clauses to be false, can be extended to a satisfying assignment of the problem.
 \end{defn}
 
 \begin{thm}
@@ -298,7 +298,7 @@ We note that it is possible now to convert this 4-SAT instance back to a \textsc
 
 \item If we fix both $x$ to 1 and $y$ to 0, then removing the $\neg x$ and $y$ literals from $C'$ transform it back into $C$, and therefore this restriction has a satisfying assignment if and only if $C$ did originally.
 \end{enumerate}
-Therefore, since \textsc{3-SAT} is \textbf{NP}-hard, so is \textsc{2-Robust 0-valid 1-valid 3-SAT}. It is in \textbf{NP} since there are only $O(n^2)$ different pairs of variables to set, and so the witness size to demonstrate a set of assignments that display robustness is sitll only polynomially sized.  Hence,  \textsc{2-Robust 0-valid 1-valid 3-SAT} is \textbf{NP}-complete.
+Therefore, since \textsc{3-SAT} is \textbf{NP}-hard, so is \textsc{2-Robust 0-valid 1-valid 3-SAT}. It is in \textbf{NP} since there are only $O(n^2)$ different pairs of variables to set, and so the witness size to demonstrate a set of assignments that display robustness is still only polynomially sized.  Hence,  \textsc{2-Robust 0-valid 1-valid 3-SAT} is \textbf{NP}-complete.
 
 \end{proof}
 \begin{cor}
