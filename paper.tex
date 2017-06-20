@@ -165,8 +165,6 @@ In 1993, Hardy \cite{Hard1993} demonstrated that the table in Figure \ref{HardyP
 
 These considerations motivate a decision problem: does a given a table of possibilities constitute a demonstration of nonlocality?
 
-
-
 \begin{defn}[$(l,m)$-\textsc{PossLoc}]
 \quad\\
 Instance: a possibilistic table of data represented by a  function $T:A\times B \times \{1,\dots, l\}\times \{1,\dots, m\}\rightarrow\{0,1\}$.
@@ -205,7 +203,7 @@ However, this argument is specific to the case in which we have measurements wit
 \draw [dash pattern=on 2pt off 2pt] (-3.6765801200722317,-1.575677194316671)-- (2.5262219891238353,3.101322695507066);
 \draw [dash pattern=on 2pt off 2pt] (-2.5074154767005594,3.116547388890871)-- (3.70768134486122,-1.501032659527465);
 \draw [dash pattern=on 2pt off 2pt] (3.70768134486122,-1.501032659527465)-- (2.5262219891238353,3.101322695507066);
-\begin{scriptsize}
+\begin{small}
 \draw [fill=uuuuuu] (0.,0.) circle (1.5pt);
 \draw [fill=xdxdff] (-2.5074154767005594,3.116547388890871) circle (1.5pt);
 \draw[color=xdxdff] (-2.8168692003229885,3.7112493895076946) node {$x$};
@@ -219,14 +217,16 @@ However, this argument is specific to the case in which we have measurements wit
 \draw[color=xdxdff] (0.8598107917302307,4.4146142575526595) node {$b$};
 \draw [fill=xdxdff] (-3.6765801200722317,-1.575677194316671) circle (1.5pt);
 \draw[color=xdxdff] (-4.127685545315876,-1.244275817172741) node {$B$};
-\end{scriptsize}
+\draw[color=xdxdff] (0.0,2.8) node {$\rho$};
+\end{small}
 \end{tikzpicture}
 \end{center}
 \caption{Points on the Bloch sphere to which Alice's ensemble can be steered, revealing the generalised Hardy paradox.}
 \label{steer}
 \end{figure}
 %Need to define what's going on in this figure! Then show how it gives rise to these possibilities. Give combinatorial condition.
-Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
+
+Figure \ref{steer} shows an equatorial slice of the Bloch sphere, and a set of states of Bob's system to which he can be ``steered'' by Alice. For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
 \begin{equation*}
 \begin{array}{ c  | c c | c c c| c c c|}\
   & b&b^\perp& A^\perp &B^\perp&x^\perp& A^\perp &B^\perp&y^\perp \\ \hline
