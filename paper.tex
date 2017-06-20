@@ -104,11 +104,54 @@ a_1=1&0&0 &1 &1\\ \hline
 \label{sig}
 \end{figure}
 
-If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can restrict our gaze to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. Following Mansfield and Fritz \cite{Mans2011}, we say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables.
+If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can restrict our gaze to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. Following Mansfield and Fritz \cite{Mans2011}, we say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables that obey a no-signalling restriction. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables. Figure \ref{localtable} demonstrates a simple example of a table that is local, as it permits a decomposition into grids corresponding to deterministic local hidden variables.
 
-Add example of local table
+\begin{figure}
+\begin{equation*}
+\begin{array}{c| c c | c c |}
+&&&&\\ \hline
+&1 &0  &0 & 1\\
+&0&1  &0 &1\\ \hline
+&0&0&0&0 \\
+&1&1 &0 &1 \\ \hline
+\end{array} =
+\begin{array}{c| c c | c c |}
+&&&&\\ \hline
+&1 &0  &0 & 1\\
+&0&0  &0 &0\\ \hline
+&0&0&0&0 \\
+&1&0 &0 &1 \\ \hline
+\end{array} +
+\begin{array}{c| c c | c c |}
+&&&&\\ \hline
+&0 &0  &0 & 0\\
+&0&1  &0 &1\\ \hline
+&0&0&0&0 \\
+&0&1 &0 &1 \\ \hline
+\end{array} 
+\end{equation*}
+\caption{A table of possibilities that does not exhibit nonlocality; it can be decomposed into a sum of deterministic grids that obey no-signalling.}
+\label{localtable}
+\end{figure}
 
-Add Hardy table.
+In 1993, Hardy \cite{Hard1993} demonstrated that the table in Figure \ref{HardyParadox} was realisable quantum mechanically; there exists a quantum state, and quantum measurements performable on two separated subsystems that yield the pattern of possible and impossible events. The ``1'' entry in the top left corner cannot be part of a deterministic grid that obeys no-signalling; this can be seen by noting that such a grid would have to include the top-right 1 in the top-right context and the bottom-left 1 in the bottom-left context, and these would together imply that there should be a 1 entry in the bottom right of the bottom right context, where in fact there is a 0. This is the smallest possibility table that can yield such nonlocality \cite{Mans2011}.
+
+
+\begin{figure}
+\begin{equation*}
+\begin{array}{c| c c | c c |}
+&&&&\\ \hline
+&1 &1  &0 & 1\\
+&1&1  &1&1\\ \hline
+&0&1&1&1 \\
+&1&1 &1 &0 \\ \hline
+\end{array}
+\end{equation*}
+\caption{The table of possibilities for the Hardy paradox.}
+\label{HardyParadox}
+\end{figure}
+
+
 %Need to add:  What does it meant to be quantumly accessible? What's the complexity of finding out if one is? define "context"
 %use consistent notation for the measurement setting selection
 
