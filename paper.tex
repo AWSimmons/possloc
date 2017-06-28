@@ -377,6 +377,7 @@ x_3=1& 1 & 1& 1 \\ \hline
  \end{equation*}
 We see we cannot simultaneously assign a 1 to each of the top subrows as part of a deterministic grid. We, then, need only to answer the question of the necessary and sufficient nature of \textsc{2-Robust}ness; we note that choosing a specific 1 to complete to a grid represents therefore an assignment of one variable, and the structure of the table then might result in the forced selection of another variable's assignment, if there is a 0 in the same subcolumn as the selected 1. Therefore by the same logic as before, the \textsc{(2,3)-PossLoc} decision problem is \textbf{NP}-complete.
 \end{proof}
+
 Therefore, since \textsc{2-Robust 3-SAT} is \textbf{NP}-hard; any instance of \textsc{2-Robust 3-SAT} can be reduced to an instance of \textsc{(2,3)-PossLoc} in polynomial time; and \textsc{(2,3)-PossLoc} is in \textbf{NP}, \textsc{(2,3)-PossLoc} is \textbf{NP}-complete.
 \end{proof}
 
@@ -388,7 +389,7 @@ We should note at this point that all the above proofs are for generalised no-si
 All the quantumly accessible instances of the above \textsc{(2,3)-PossLoc} construction in which the party with three-outcome measurements has access only to a 2-dimensional quantum system are 0-valid and 1-valid under a variable renaming that can be calculated in linear time.
 \end{thm}
 \begin{proof}
-Each measurement row corresponds to a two-outcome measurement. Without loss of generality, we can take these to be projective measurements since any two-outcome POVM is a convex mixture of such projectors. If our entangled state is pure, which it has to be in order for there to be any impossible events, then this means that each outcome steers Bob's system to one of two pure states that convexly mix to Bob's reduced state.
+Each measurement row corresponds to a two-outcome measurement. Without loss of generality, we can take these to be projective measurements since any two-outcome POVM is a convex mixture of such projectors. Since the possibility table would then be a statistical mixture of two or more other tables, noting that the statistical mixture of two local tables is always local, if there exists a quantum mechanically accessible table using POVMs for measurement choices for Alice, there must exist one using PVMs. If our entangled state is pure, which it has to be in order for there to be any impossible events, then this means that each outcome steers Bob's system to one of two pure states that convexly mix to Bob's reduced state.
 
 We note that each measurement column corresponds to a three-element POVM, and as such the hyperplane that is the convex hull of each triple contains the origin. Additionally, these POVM elements have an additional geometrical constraint: the POVM element with a 0 entry when $x_i=0$, say, must be orthogonal to the state to which Bob is steered when he gets the outcome $x_i=0$. This restricts each of these elements to be proportional to the projector onto the unique element orthogonal to the steered states.
 
