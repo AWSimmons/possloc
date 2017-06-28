@@ -274,7 +274,7 @@ We will now introduce the notion of 0- and \textsc{1-valid 3-SAT}. This restrict
 \begin{defn}
 \textsc{0-valid 3-SAT} is the set of \textsc{3-SAT} decision problems that are satisfied by assigning a value of 0 to all variables.
 \end{defn}
-We will define \textsc{1-valid 3-SAT} analagously.
+We will define \textsc{1-valid 3-SAT} analagously. Now, we will demonstrate that \textsc{2-Robust 0-valid 1-valid 3-SAT}, the set of \textsc{2-Robust 3-SAT} instances which are both \textsc{0-valid} and \textsc{1-valid}, is \textbf{NP}-complete. We will then demonstrate how such a problem can be embedded into $(2,3)$-\textsc{PossLoc}.
 \begin{lem}\label{rob3sat}
 \textsc{2-Robust 0-valid 1-valid 3-SAT} is \textbf{NP}-complete.
 \end{lem}
@@ -293,11 +293,13 @@ We note that it is possible now to convert this 4-SAT instance back to a \textsc
 (\circ l_1\cup\circ l_2 \vee  \circ  l_3 \vee x) \rightarrow (\circ l_1\cup\circ l_2 \vee z)\wedge(\neg z \vee \circ  l_3 \vee x)
 \end{equation}
 
- We note also that this adjustment maintains 0-validity and 1-validity, since we can choose an order on the $\{\circ l_i\}$ such that each of the two clauses in the effective clause contain a positive and a negative literal. We note that since each effective clause contains either $\neg x$ or $y$, setting $x$ to 0 and $y$ to 1 leads to a satisfying assignment for any assignment choices of the other variables. Now, to test whether or not the instance is $2$-robust, we check that there are no choices for our two variables to fix that cause there to be no satisfying assignment. We will consider the possibilities on a case-by-case basis:
+ We note also that this adjustment maintains 0-validity and 1-validity, since we can choose an order on the $\{\circ l_i\}$ such that each of the two clauses in the effective clause contain a positive and a negative literal. We note that since each effective clause contains either $\neg x$ or $y$, setting $x$ to 0 and $y$ to 1 leads to a satisfying assignment for any assignment choices of the other variables. 
+
+We can now verify that this transformed scenario is \textsc{2-Robust}ly satisfiable if and only if our original \textsc{3-SAT} instance was satisfiable. We will consider the possibilities on a case-by-case basis, depending on whether or not the variables $x$ or $y$ have been assigned valuations of 1 and 0 respectively:
 \begin{enumerate}
 \item If neither $x$ is fixed to 1 or $y$ is fixed to 0, then we set $x$ to 0 and $y$ to 1. As mentioned above, this yields a satisfying assignment. If one or more $z$ has been assigned a value, we may need to assign some $l_i$ to make the affected clauses valid. Since this affects at most two clauses it can be seen that it is always possible to satisfy such a modified pair of clauses.
 
-\item If exactly one of $x$ is fixed to 1 or $y$ is fixed to 0, then, removing all instances of the $\neg x$ or $y$ literals respectively still leaves the instance either 0-valid or 1-valid, and we can utilise this assignment.
+\item If exactly one of $x$ is fixed to 1 or $y$ is fixed to 0, then, removing all instances of the $\neg x$ or $y$ literals respectively still leaves the instance either 0-valid or 1-valid, and so the instance is satisfiable by definition.
 
 \item If we fix both $x$ to 1 and $y$ to 0, then removing the $\neg x$ and $y$ literals from $C'$ transform it back into $C$, and therefore this restriction has a satisfying assignment if and only if $C$ did originally.
 \end{enumerate}
