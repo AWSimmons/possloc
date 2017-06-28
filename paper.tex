@@ -270,10 +270,11 @@ Following Abramsky \emph{et al}, we shall define, for a satisfiability decision 
 The \textsc{(2,3)-PossLoc} decision problem is \textbf{NP}-complete.
 \end{thm}
 \begin{proof}
+We will now introduce the notion of 0- and \textsc{1-valid 3-SAT}. This restriction is not strictly necessary for  this proof, but we will see later that it has a bearing on the computational hardness of deciding locality for quantum-mechanically accessible possibilitiy tables.
 \begin{defn}
-\textsc{0(1)-valid 3-SAT} is the set of \textsc{3-SAT} decision problems that are satisfied by assigning a value of 0 (1) to all variables.
+\textsc{0-valid 3-SAT} is the set of \textsc{3-SAT} decision problems that are satisfied by assigning a value of 0 to all variables.
 \end{defn}
-
+We will define \textsc{1-valid 3-SAT} analagously.
 \begin{lem}\label{rob3sat}
 \textsc{2-Robust 0-valid 1-valid 3-SAT} is \textbf{NP}-complete.
 \end{lem}
@@ -285,7 +286,7 @@ f(l_1\cup l_2 \vee  \circ  l_3) = (l_1\vee l_2 \vee \circ l_3 \vee \neg x),
 \begin{equation}
 f(\neg l_1\vee\neg l_2 \vee \circ  l_3) = (\neg l_1\cup\neg l_2 \vee \circ  l_3 \vee  y),
 \end{equation}
-in which the $\circ$ symbol is being used to denote the presence or absence of a $\neg$ symbol. We note that now, every clause of $C'=\bigwedge_i f(c_i)$ contains at least one positive literal and at least one negative literal, and so $C'$ is both 0-valid and 1-valid.
+in which the $\circ$ symbol is being used to denote the presence or absence of a $\neg$ symbol. By the pigeonhole principle, each clause must contain either at least two positive literals, or at least two negated literals, and so this mapping is defined uniquely between \textsc{3-SAT} and \textsc{4-SAT} instances. We note that now, every clause of $C'=\bigwedge_i f(c_i)$ contains at least one positive literal and at least one negative literal, and so $C'$ is both 0-valid and 1-valid.
 
 We note that it is possible now to convert this 4-SAT instance back to a \textsc{3-SAT} instance by the following procedure, mapping each clause to a pair of equisatisfiable clauses (which we will refer to as an effective clause):
 \begin{equation}
