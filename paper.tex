@@ -41,6 +41,7 @@
 \begin{document}
 \title{On the computational complexity of detecting possibilistic locality}
 \author{Andrew W. Simmons}\affiliation{Department of Physics, Imperial College London, SW7 2AZ.}
+\email{andrew@simmons.co.uk}
 \begin{abstract}
 The proofs of quantum nonlocality due to Greenberger, Horne and Zeilinger, and due to Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system; in a physical theory, some outcomes of this experiment will be considered possible, others impossible, and an assigment of the values ``possible" and ``impossible" to these different outcomes forms a table of possibilities. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
 \end{abstract}
@@ -257,8 +258,9 @@ We see that in some sense this can be thought of as a generalisation of Hardy's 
 
 \section{\textsc{(2,3)-PossLoc} is \textbf{NP}-complete}
 
-
 It is easy to see that $(j,k)$-\textsc{PossLoc} is in \textbf{NP}; to show that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. It is clear to see that such a witness is only polynomially-sized, and can be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky \emph{et al} showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
+
+We will demonstrate that $(2,3)$-\textsc{PossLoc} is \textbf{NP}-complete. First, we will introduce, following Abramsky, Gottlob and Kolaitis, the concept of a robust satisfiability problem; we will then demonstrate the \textbf{NP}-completeness of a specific family of robust satisfaction problems, and show a polynomial-time embedding of such problems into $(2,3)$-\textsc{PossLoc}.
 
 \begin{defn}[$r$-\textsc{Robust} satisfiability problems]	
 Following Abramsky \emph{et al}, we shall define, for a satisfiability decision problem \textsc{P}, the problem $r$-\textsc{Robust P} to be the decision problem that, given an instance of \textsc{P}, asks whether or not every assignment of $r$ variables in the problem that do not directly cause one of the clauses to be false, can be extended to a satisfying assignment of the problem.
