@@ -11,6 +11,8 @@
 \usepackage{pgf,tikz}
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathreplacing}
+
 \usepackage{mathrsfs}
 \usepackage{braids}
 \usepackage{fullpage}
@@ -160,7 +162,7 @@ In 1993, Hardy \cite{Hard1993} demonstrated that the table in Figure \ref{HardyP
 
 %Put in Hardy's original table- move material from locality decision problem to this background sec
 
-\section{The Locality Decision Problem and Incompleteness of Hardy's Paradox}
+\section{The Locality Decision Problem and Incompleteness of Hardy's Paradox}\label{dpandincompleteness}
 
 %Give specific decomposition of a deterministic grid.
 
@@ -398,9 +400,9 @@ We note that each variable is associated with two POVM elements, one representin
 We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We shall see however, that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard.
 
 
-We see that we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We have also seen that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: one can show that the array shown below is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not.
-
-\begin{equation*} \label{badarray}
+We see that we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We have also seen that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not.
+\begin{figure}
+\begin{equation*} 
 \begin{array}{  | c c  c| c c c|}
 \hline
  0 & 1 & 1 & 0 & 1 & 1 \\
@@ -410,15 +412,18 @@ We see that we cannot make any assumptions about the difficulty of 2-robust vari
  1 & 1 & 0&  1 & 1 & 1\\
  1 & 1& 1 &1 & 1 & 0 \\ \hline
  \end{array}
- \end{equation*}
+ \end{equation*} 
+\caption{This table of possibilities, which corresponds to the \textsc{3-SAT} instance $(x_1\wedge x_2 \wedge x_3)\vee (x_1\wedge x_2 \wedge \neg x_3)$ can be shown to be unrealisable quantum mechanically by invoking the NPA heirarchy.}
+\label{badarray}
+\end{figure}
  
-Having considered some restrictions on which \textsc{3-SAT} instances can be embedded into \textsc{(2,3)-PossLoc}, we will now present a construction that enables a reasonably large class of \textsc{3-SAT} instances to be embedded. We will consider the case in which our projective measurements act on a qubit, and are additionally confined to a single plane through the Bloch sphere. It is possible that relaxing either of these assumptions could allow more instances to be embedded, however this is not clear: moving from a two-dimensional to a higher-dimensional quantum system could allow more flexibility with regards to the geometry of the projectors, but since our measurements can only have two outcomes, having more dimensions causes the creation of impossible events to be more difficult; likewise moving from a system in which all the projectors are coplanar makes it harder for impossible events to be created from the projectors since for a qubit at least, we need three coplanar vectors to form a valid POVM. We note that while the array in equation \ref{badarray} is clearly not possible in this situation, since if projectors $\{P_1,P_2,P_3\}$ in a two-dimensional Hilbert space have the identity projector in their convex hull, then the set $\{P_1,P_2, P_3^\perp\}$ does not unless $P_1=P_2^\perp$, which would form a pair not a triple, this array is not possible to create in any quantum dimension and any realisation of measurement outcomes.
+Having considered some restrictions on which \textsc{3-SAT} instances can be embedded into \textsc{(2,3)-PossLoc}, we will now present a construction that enables a reasonably large class of \textsc{3-SAT} instances to be embedded. We will consider the case in which our projective measurements act on a qubit, and are additionally confined to a single plane through the Bloch sphere. It is possible that relaxing either of these assumptions could allow more instances to be embedded, however this is not clear: moving from a two-dimensional to a higher-dimensional quantum system could allow more flexibility with regards to the geometry of the projectors, but since our measurements can only have two outcomes, having more dimensions causes the creation of impossible events to be more difficult; likewise moving from a system in which all the projectors are coplanar makes it harder for impossible events to be created from the projectors since for a qubit at least, we need three coplanar vectors to form a valid POVM. We note that while the array in Figure \ref{badarray} is clearly not possible in this situation, since if projectors $\{P_1,P_2,P_3\}$ in a two-dimensional Hilbert space have the identity projector in their convex hull, then the set $\{P_1,P_2, P_3^\perp\}$ does not unless $P_1=P_2^\perp$, which would form a pair not a triple, this array is not possible to create in any quantum dimension and any realisation of measurement outcomes.
 
 \begin{figure}[h]
 \centering
-\resizebox{0.45\textwidth}{0.45\textwidth}{
+\resizebox{0.45\textwidth}{0.409\textwidth}{
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.25cm,y=1.25cm]
-\clip(-5.,-5.) rectangle (5.,5.);
+\clip(-6.,-5.) rectangle (5.,5.);
 \draw(0.,0.) circle (5.cm);
 \draw (-3.3,-2.27)-- (1.36,3.76);
 \draw (0.54,3.96)-- (-1.57,-3.68);
@@ -427,6 +432,8 @@ Having considered some restrictions on which \textsc{3-SAT} instances can be emb
 \draw [dash pattern=on 3pt off 3pt] (-1.3609931181462014,3.7613425438742856)-- (-3.3,-2.27);
 \draw [dash pattern=on 3pt off 3pt] (-3.3,-2.27)-- (1.5730879602280303,-3.6776887129535054);
 \draw [dash pattern=on 3pt off 3pt] (1.5730879602280303,-3.6776887129535054)-- (-1.3609931181462014,3.7613425438742856);
+\draw [decorate,decoration={brace,amplitude=15pt},xshift=0pt,yshift=0pt] (-4,2) -- (-4,4) node [black,midway,xshift=-1.5cm,yshift=0.2cm] { Positive} node [black,midway,xshift=-1.5cm,yshift=-0.2cm] { Literals} ;
+\draw [decorate,decoration={brace,amplitude=15pt},xshift=0pt,yshift=0pt] (-4,-4) -- (-4,2) node [black,midway,xshift=-1.5cm,yshift=0.2cm] { Negative} node [black,midway,xshift=-1.5cm,yshift=-0.2cm] { Literals} ;
 \begin{scriptsize}
 \draw [fill=black] (0.,0.) circle (2.5pt);
 \draw [fill=black] (0.,2.) circle (1.5pt);
@@ -445,7 +452,11 @@ Having considered some restrictions on which \textsc{3-SAT} instances can be emb
 \label{Basicdiagram}
 \end{figure}
 
-We will draw inspiration for our projector geometry from the generalised Hardy paradox given above and shown in Figure \ref{steer}. Any triple-outcome measurement for Bob will be enacted as a triple of projectors which include the identity operator in their convex hull. The two-outcome measurement is chosen such that the projector for the measurement subrow with the desired 0 steers the state into the one orthogonal to the projector assigned to relevant measurement subcolumn. Explicitly, our embedding has to conform to the following geometric restrictions:
+We will draw inspiration for our projector geometry from the novel possibilistic nonlocality scenario we introduced in section \ref{dpandincompleteness}, and illustrated in figure \ref{steer}. 
+
+For diagrammatic clarity, in this section we will adopt a different representation for our diagrams to the previous section. We will consider the scenario in which Alice and Bob share a pure, entangled state and so once again, we will consider an equatorial slice of the Bloch sphere, and the reduced state for Bob is a point, $\rho$, within the circle. Any pair of points on the edge of the circle, the straight line through which goes through the point $\rho$ constitute a pair of states to which Bob can be steered (we will call this a steering pair); that is, there exists a measurement row such that if the event corresponding to one subcolumn is observed by Alice, Bob's system is left in one of those states, and if the other is observed Bob's system is left in the other. The departure from our previous notation comes with how we will represent POVMs. Each POVM element, which in this section will be proportional to a projector $\ketbra{\psi}$, will be shown on the equatorial Bloch plane as being in the location corresponding to the orthogonal projection $\ketbra{\psi^\perp}$. The reason for this is that in this representation of the system, when the same point on the circle is part of a POVM and a steering pair, the possibility at the intersection of the relevant measurement subrow and measurement subcolumn will be 0; Bob's system is left in a state $\ket{\psi^\perp}$ and the POVM element is proportional to $\ket{\psi}$.
+
+%Any triple-outcome measurement for Bob will be enacted as a triple of projectors which include the identity operator in their convex hull. The two-outcome measurement is chosen such that the projector for the measurement subrow with the desired 0 steers the state into the one \emph{orthogonal} to the projector assigned to relevant measurement subcolumn. This is a different choice of representation than the one used earlier, but will be adopted now for diagrammatic clarity. Explicitly, our embedding has to conform to the following geometric restrictions:
 
 \begin{itemize}
 \item The reduced state $\rho_B$ is a point inside or on the edge of a circle.
@@ -454,10 +465,10 @@ We will draw inspiration for our projector geometry from the generalised Hardy p
 
 \item A measurement column consists of three points around the edge of the circle such that the circle's centre is in their convex hull, each of which is associated with a single measurement subcolumn.
 
-\item An impossible event happens when the point corresponding to that measurement subcolumn and the point corresponding to that measurment subrow are the same point.
+\item An impossible event happens when the point corresponding to that measurement subcolumn and the point corresponding to that measurment subrow are the same point. %This happens due to our new choice of state representation in our illustrations; the projector for a measurement subrow steers the state into the one orthogonal to the point that it is demarcated on the Bloch equator. The POVM element is proportional to the projector onto that point on the equator, and so when the two are represented by the same point, they are orthogonal which corresponds to an impossible event.
 \end{itemize}
 
-A specific quantum scenario will now be explored alongside a characterisation of some of the problem instances that can be embedded into it. Given a \textsc{3-SAT} instance, let us assign each variable a colour: blue or red. As can be seen in Figure \ref{Basicdiagram}, a clause consisting of a red positive literal, a red negative literal, and a blue negative literal,\emph{eg} $(\color{red}{l_1} \color{black}{\wedge} \color{red}{\neg l_2} \color{black}{\wedge} \color{blue}{\neg l_3})$, forms a valid POVM.
+A specific quantum scenario will now be explored alongside a characterisation of some of the problem instances that can be embedded into it. Given a \textsc{3-SAT} instance, let us assign each variable a colour: blue or red. As can be seen in Figure \ref{Basicdiagram}, a clause consisting of a red positive literal, a red negative literal, and a blue negative literal, \emph{e.g.} $(\color{red}{l_1} \color{black}{\wedge} \color{red}{\neg l_2} \color{black}{\wedge} \color{blue}{\neg l_3})$, forms a valid POVM.
 
 If we add projectors for $x$ and $y$ that are close to the eigendecomposition of $\rho_B$ (distinguished only because we want them to have independent possibilities), as shown in Figure \ref{xydiag}, we can note that we can also support clauses of forms $(\color{red}{l_1} \color{black}{\vee} \color{blue}{ l_2} \color{black}{\vee} \neg x)$ or $(\color{red}{\neg l_1} \color{black}{\vee} \color{blue}{\neg l_2} \color{black}{\vee} y)$.
 
@@ -488,6 +499,7 @@ If we add projectors for $x$ and $y$ that are close to the eigendecomposition of
 \draw [fill=qqqqff] (1.36,3.76) circle (1.5pt);
 \draw [fill=uuuuuu] (0.,-4.) circle (1.5pt);
 \draw [fill=uuuuuu] (0.,4.) circle (1.5pt);
+
 \end{scriptsize}
 \end{tikzpicture}}
 \caption{Adding in $x$ and $y$ projectors close to the eigendecomposition of $\rho_B$.}
