@@ -54,7 +54,7 @@ Since the inception of quantum mechanics, the apparent nonlocality of the theory
 
 In this paper, we will consider ``Bell experiments'' of the classic form. Two experimenters have laboratories in separated locations, performing measurements on two quantum systems; each experimenter has a variety of measurements at their disposal, and once the measurements are done, they compare results. Quantum theory provides a framework in which the probability of the different outcomes, given the measurement settings chosen by each experimenter, can be calculated. In 1966, Bell showed that in some cases, the statistics predicted by quantum mechanics was incompatible with a notion of local realism; that each experimenter was performing measurements on a system with a definite state, independent of the measurement choices made at the other location \cite{Bell1966} When such an explanation in terms of local hidden variables is not possible, we would say that the distribution is \emph{nonlocal}, or demonstrates \emph{Bell nonlocality}. This motivates a natural decision problem: we are given a table of empirical data from such a Bell experiment, and asked to decide whether or not it constitutes a demonstration of nonlocality. 
 
-In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether or not a given table of these operational predictions for a Bell experiment had a local hidden variable explanation was \textbf{NP}-hard, building on work by Pitowsky \cite{Pito1991}. In this paper, we consider a more extreme, possibilistic, manifestation of nonlocality; one in which it is not only true that we cannot account for the specific experimental probabilities with a local hidden variable model, but that we cannot even account for the possibilities. In doing so, we will identify the minimal operational requirements for this problem to remain \textbf{NP}-hard, filling in the final gap in a categorisation started by Mansfield and Fritz \cite{Mans2011,Mans2017} and continued by Abramsky, Gottlob and Kolaitis \cite{Abra2013}. This nonlocality is a feature only of the table of possibilities at hand, with no dependence on the source of the correlations. Accordingly, the first sections of this paper will focus only on the decision problem at hand, and no knowledge about how such a table might be calculated within the formalism of quantum mechanics is required. In the final section, we turn our focus to those data tables accessible within quantum theory, and demonstrate how we can embed a large set of \textsc{3-SAT} problems into a quantum formalism.
+In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether or not a given table of these operational predictions for a Bell experiment had a local hidden variable explanation was \textbf{NP}-hard, building on work by Pitowsky \cite{Pito1991}. In this paper, we consider a more extreme, possibilistic, manifestation of nonlocality; one in which it is not only true that we cannot account for the specific experimental probabilities with a local hidden variable model, but that we cannot even account for the possibilities. In doing so, we will identify the minimal operational requirements for this problem to remain \textbf{NP}-hard, filling in the final gap in a categorisation started by Mansfield and Fritz \cite{Mans2011,Mans2017} and continued by Abramsky, Gottlob, and Kolaitis \cite{Abra2013}. This nonlocality is a feature only of the table of possibilities at hand, with no dependence on the source of the correlations. Accordingly, the first sections of this paper will focus only on the decision problem at hand, and no knowledge about how such a table might be calculated within the formalism of quantum mechanics is required. In the final section, we turn our focus to those data tables accessible within quantum theory, and demonstrate how we can embed a large set of \textsc{3-SAT} problems into a quantum formalism.
 
 
 \section{Background}
@@ -208,28 +208,29 @@ However, this argument is specific to the case in which we have measurements wit
 \draw [dash pattern=on 2pt off 2pt] (3.70768134486122,-1.501032659527465)-- (2.5262219891238353,3.101322695507066);
 \begin{small}
 \draw [fill=uuuuuu] (0.,0.) circle (1.5pt);
-\draw [fill=xdxdff] (-2.5074154767005594,3.116547388890871) circle (1.5pt);
-\draw[color=xdxdff] (-2.8168692003229885,3.7112493895076946) node {$x$};
-\draw [fill=xdxdff] (2.5262219891238353,3.101322695507066) circle (1.5pt);
-\draw[color=xdxdff] (2.7461074833053605,3.5513937376792932) node {$y$};
-\draw [fill=xdxdff] (-0.6234859067055393,3.9511093789136704) circle (1.5pt);
-\draw[color=xdxdff] (-0.802687987285138,4.47855651828402) node {$a$};
-\draw [fill=xdxdff] (3.70768134486122,-1.501032659527465) circle (1.5pt);
-\draw[color=xdxdff] (4.024952697932568,-1.2762469475384213) node {$A$};
-\draw [fill=xdxdff] (0.6202539684631545,3.951618024886225) circle (1.5pt);
-\draw[color=xdxdff] (0.8598107917302307,4.4146142575526595) node {$b$};
-\draw [fill=xdxdff] (-3.6765801200722317,-1.575677194316671) circle (1.5pt);
-\draw[color=xdxdff] (-4.127685545315876,-1.244275817172741) node {$B$};
-\draw[color=xdxdff] (0.0,2.8) node {$\rho$};
+\draw [fill=uuuuuu] (-2.5074154767005594,3.116547388890871) circle (1.5pt);
+\draw[color=uuuuuu] (-2.8168692003229885,3.7112493895076946) node {$x$};
+\draw [fill=uuuuuu] (2.5262219891238353,3.101322695507066) circle (1.5pt);
+\draw[color=uuuuuu] (2.7461074833053605,3.5513937376792932) node {$y$};
+\draw [fill=uuuuuu] (-0.6234859067055393,3.9511093789136704) circle (1.5pt);
+\draw[color=uuuuuu] (-0.802687987285138,4.47855651828402) node {$a$};
+\draw [fill=uuuuuu] (3.70768134486122,-1.501032659527465) circle (1.5pt);
+\draw[color=uuuuuu] (4.024952697932568,-1.2762469475384213) node {$A$};
+\draw [fill=uuuuuu] (0.6202539684631545,3.951618024886225) circle (1.5pt);
+\draw[color=uuuuuu] (0.8598107917302307,4.4146142575526595) node {$b$};
+\draw [fill=uuuuuu] (-3.6765801200722317,-1.575677194316671) circle (1.5pt);
+\draw[color=uuuuuu] (-4.127685545315876,-1.244275817172741) node {$B$};
+\draw[color=uuuuuu] (0.0,2.8) node {$\rho$};
 \end{small}
 \end{tikzpicture}
 \end{center}
-\caption{Points on the Bloch sphere to which Alice's ensemble can be steered, revealing the generalised Hardy paradox.}
+\caption{Points on the Bloch sphere to which Alice's ensemble can be steered, revealing a generalisation of the Hardy paradox.}
 \label{steer}
 \end{figure}
 
 
-Figure \ref{steer} shows an equatorial slice of the Bloch sphere, and a set of states of Bob's system to which he can be ``steered'' by Alice. For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. For clarity, the antipodal points to those that Alice can steer Bob to are not shown on in Figure \ref{steer}. Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
+Figure \ref{steer} shows an equatorial slice of the Bloch sphere, and a set of states of Bob's system to which he can be ``steered'' by Alice.  The Bloch sphere is a representation of the state space of a quantum system of dimension $2$ as a sphere, in which two orthogonal quantum states are mapped to antipodal points on the sphere; this mapping is a case of the Hopf fibration. Taking an equatorial slice can be thought of as restricting to the case of \emph{rebits}, states that can be represented as vectors over $\mathbbm{R}^2$ rather than $\mathbbm{C}^2$.
+For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. For clarity, the antipodal points to those that Alice can steer Bob to are not shown on in Figure \ref{steer}. Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
 \begin{equation*}
 \begin{array}{ c  | c c | c c c| c c c|}\
   & b&b^\perp& A^\perp &B^\perp&x^\perp& A^\perp &B^\perp&y^\perp \\ \hline
@@ -260,12 +261,12 @@ We see that in some sense this can be thought of as a generalisation of Hardy's 
 
 \section{\textsc{(2,3)-PossLoc} is \textbf{NP}-complete}
 
-It is easy to see that $(j,k)$-\textsc{PossLoc} is in \textbf{NP}; to show that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. It is clear to see that such a witness is only polynomially-sized, and can be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky \emph{et al} showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
+It is easy to see that $(j,k)$-\textsc{PossLoc} is in \textbf{NP}; to show that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. It is clear to see that such a witness is only polynomially-sized, and can be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky, Gottlob, and Kolaitis showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
 
 We will demonstrate that $(2,3)$-\textsc{PossLoc} is \textbf{NP}-complete. First, we will introduce, following Abramsky, Gottlob and Kolaitis, the concept of a robust satisfiability problem; we will then demonstrate the \textbf{NP}-completeness of a specific family of robust satisfaction problems, and show a polynomial-time embedding of such problems into $(2,3)$-\textsc{PossLoc}.
 
 \begin{defn}[$r$-\textsc{Robust} satisfiability problems]	
-Following Abramsky \emph{et al}, we shall define, for a satisfiability decision problem \textsc{P}, the problem $r$-\textsc{Robust P} to be the decision problem that, given an instance of \textsc{P}, asks whether or not every assignment of $r$ variables in the problem that do not directly cause one of the clauses to be false, can be extended to a satisfying assignment of the problem.
+Following Abramsky, Gottlob, and Kolaitis we shall define, for a satisfiability decision problem \textsc{P}, the problem $r$-\textsc{Robust P} to be the decision problem that, given an instance of \textsc{P}, asks whether or not every assignment of $r$ variables in the problem that do not directly cause one of the clauses to be false, can be extended to a satisfying assignment of the problem.
 \end{defn}
 
 \begin{thm}
@@ -321,7 +322,7 @@ The reduction algorithm is as follows:
 \begin{itemize}
 \item For each variable in the \textsc{2-Robust 3-SAT} instance, we add a measurement to the party with two-outcome measurements available to them, to which we will assign the measurement rows. We pick any ordering of the variables to do this.
 
-\item For each clause in the \textsc{2-Robust 3-SAT} instance, we add a measurement to the party with three-outcome measurements available to them; these are our measurement columns. This is a departure from the strategy of Abramsky \emph{et al}, whose constructions have a direct symmetry between the rows and columns.
+\item For each clause in the \textsc{2-Robust 3-SAT} instance, we add a measurement to the party with three-outcome measurements available to them; these are our measurement columns. This is a departure from the strategy of Abramsky, Gottlob, and Kolaitis, whose constructions have a direct symmetry between the rows and columns.
 
 \item For each intersection of a variable row and clause column, such that the variable is represented positively in the clause, we have the measurement possibilities given by:
 \begin{equation}
@@ -377,7 +378,10 @@ x_3=0& 1 & 1 & 0\\
 x_3=1& 1 & 1& 1 \\ \hline
  \end{array}
  \end{equation*}
-We see we cannot simultaneously assign a 1 to each of the top subrows as part of a deterministic grid. We, then, need only to answer the question of the necessary and sufficient nature of \textsc{2-Robust}ness; we note that choosing a specific 1 to complete to a grid represents therefore an assignment of one variable, and the structure of the table then might result in the forced selection of another variable's assignment, if there is a 0 in the same subcolumn as the selected 1. Therefore by the same logic as before, the \textsc{(2,3)-PossLoc} decision problem is \textbf{NP}-complete.
+We see we cannot simultaneously assign a 1 to each of the top subrows as part of a deterministic grid. It now only remains to be shown that choosing a specific ``1'' instance, which needs to be extended to a deterministic grid, is the equivalent of fixing at most two variable assignments in the embedded \textsc{3-SAT} instance. We note that choosing any ``1'' instance fixes the valuation of the variable associated with its measurement row; the ``1'' is in some measurement subrow and corresponds to a value assignment for that variable. Additionally, each measurement subcolumn has exactly one ``0'' instance by construction: if this ``0'' instance is not in the same measurement row as the chosen ``1'' entry, this also fixes a variable assignment for the measurement row containing the ``0'' entry. In the example directly above, if the bottom-left ``1'' is chosen, then we see from the table that this is equivalent to asking that $x_3=1$, $x_1=1$. Therefore this construction constitutes a polynomial-time reduction from \textsc{2-Robust 3-SAT} to $(2,3)$\textsc{-PossLoc}.
+
+
+%We, then, need only to answer the question of the necessary and sufficient nature of \textsc{2-Robust}ness; we note that choosing a specific 1 to complete to a grid represents therefore an assignment of one variable, and the structure of the table then might result in the forced selection of another variable's assignment, if there is a 0 in the same subcolumn as the selected 1. Therefore by the same logic as before, the \textsc{(2,3)-PossLoc} decision problem is \textbf{NP}-complete. %Rewrite this paragraph to be more helpful.
 \end{proof}
 
 Therefore, since \textsc{2-Robust 3-SAT} is \textbf{NP}-hard; any instance of \textsc{2-Robust 3-SAT} can be reduced to an instance of \textsc{(2,3)-PossLoc} in polynomial time; and \textsc{(2,3)-PossLoc} is in \textbf{NP}, \textsc{(2,3)-PossLoc} is \textbf{NP}-complete.
@@ -400,7 +404,7 @@ We note that each variable is associated with two POVM elements, one representin
 We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We shall see however, that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard.
 
 
-We see that we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We have also seen that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not.
+We see that we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We have also seen that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here. 
 \begin{figure}
 \begin{equation*} 
 \begin{array}{  | c c  c| c c c|}
@@ -421,9 +425,9 @@ Having considered some restrictions on which \textsc{3-SAT} instances can be emb
 
 \begin{figure}[h]
 \centering
-\resizebox{0.45\textwidth}{0.409\textwidth}{
+\resizebox{0.45\textwidth}{0.40714\textwidth}{
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.25cm,y=1.25cm]
-\clip(-6.,-5.) rectangle (5.,5.);
+\clip(-5.5,-4.5) rectangle (5.,5.);
 \draw(0.,0.) circle (5.cm);
 \draw (-3.3,-2.27)-- (1.36,3.76);
 \draw (0.54,3.96)-- (-1.57,-3.68);
@@ -432,8 +436,8 @@ Having considered some restrictions on which \textsc{3-SAT} instances can be emb
 \draw [dash pattern=on 3pt off 3pt] (-1.3609931181462014,3.7613425438742856)-- (-3.3,-2.27);
 \draw [dash pattern=on 3pt off 3pt] (-3.3,-2.27)-- (1.5730879602280303,-3.6776887129535054);
 \draw [dash pattern=on 3pt off 3pt] (1.5730879602280303,-3.6776887129535054)-- (-1.3609931181462014,3.7613425438742856);
-\draw [decorate,decoration={brace,amplitude=15pt},xshift=0pt,yshift=0pt] (-4,2) -- (-4,4) node [black,midway,xshift=-1.5cm,yshift=0.2cm] { Positive} node [black,midway,xshift=-1.5cm,yshift=-0.2cm] { Literals} ;
-\draw [decorate,decoration={brace,amplitude=15pt},xshift=0pt,yshift=0pt] (-4,-4) -- (-4,2) node [black,midway,xshift=-1.5cm,yshift=0.2cm] { Negative} node [black,midway,xshift=-1.5cm,yshift=-0.2cm] { Literals} ;
+\draw [decorate,decoration={brace,amplitude=3pt},xshift=0pt,yshift=0pt] (-4,3.5) -- (-4,4) node [black,midway,xshift=-1.cm,yshift=0.2cm] { Positive} node [black,midway,xshift=-1.cm,yshift=-0.2cm] { Literals} ;
+\draw [decorate,decoration={brace,amplitude=10pt},xshift=0pt,yshift=0pt] (-4,-4) -- (-4,-2) node [black,midway,xshift=-1.cm,yshift=0.2cm] { Negative} node [black,midway,xshift=-1.cm,yshift=-0.2cm] { Literals} ;
 \begin{scriptsize}
 \draw [fill=black] (0.,0.) circle (2.5pt);
 \draw [fill=black] (0.,2.) circle (1.5pt);
@@ -519,7 +523,8 @@ $(\color{red}{\neg l_1}  \color{black}{\vee}\color{blue}{\neg l_2}  \color{black
 \item $(\color{red}{ l_1} \color{black}{\vee} \color{blue}{l_2} \color{black}{\vee} \color{red}{\neg l_3}\color{black} )$, since this becomes modified to 
 $(\color{red}{\neg z} \color{black}{\vee} \color{blue}{ l_2} \color{black}{\vee} \color{red}{\neg l_3}\color{black})\wedge(\color{blue}{z} \vee \color{red}{ l_1}\color{black}{\vee} \neg x)$, and by choosing the colouration $\color{red}{z}$ both the clauses have permitted forms.
 \end{itemize}
-We also clearly by symmetry have as permissible clauses the images of the ones above under an exchange of the colours blue and red. The rules seem to be, then, that in the original \textsc{3-SAT} each variable must be colourable either red or blue such that each clause contains at least one literal of each colour, and that the literal in each clause that is the only one of its colour must not have opposite sense to the other two literals. The author has been unable to produce a proof of \textbf{NP}-hardness or membership in \textbf{P} of such \textsc{3-SAT} instances. In any case, the quantum realisation forces a very strong geometrical relationship on clauses of the embedded instance.
+We also clearly by symmetry have as permissible clauses the images of the ones above under an exchange of the colours blue and red. The rules seem to be, then, that in the original \textsc{3-SAT} each variable must be colourable either red or blue such that each clause contains at least one literal of each colour, and that the literal in each clause that is the only one of its colour must not have opposite sense to the other two literals. %Explain what "opposite sense" means.
+The author has been unable to produce a proof of \textbf{NP}-hardness or membership in \textbf{P} of such \textsc{3-SAT} instances. In any case, the quantum realisation forces a very strong geometrical relationship on clauses of the embedded instance.
  
  \section{Conclusion}
  
