@@ -45,23 +45,23 @@
 \author{Andrew W. Simmons}\affiliation{Department of Physics, Imperial College London, SW7 2AZ.}
 \email{andrew@simmons.co.uk}
 \begin{abstract}
-The proofs of quantum nonlocality due to Greenberger, Horne and Zeilinger, and due to Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system; in a physical theory, some outcomes of this experiment will be considered possible, others impossible, and an assigment of the values ``possible" and ``impossible" to these different outcomes forms a table of possibilities. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
+The proofs of quantum nonlocality due to Greenberger, Horne, and Zeilinger; and due to Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system; in a physical theory, some outcomes of this experiment will be considered possible, others impossible, and an assigment of the values 0 (possible) and 1 (impossible) to these different outcomes forms a \emph{table of possibilities}. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
-Since the inception of quantum mechanics, the apparent nonlocality of the theory has been a thorny issue. Einstein, together with Podolsky and Rosen \cite{EPR}, argued that this property, in apparent contravention of the information-propagation bound of the speed of light from special relativity, was evidence of the incompleteness of the quantum-mechanical description of nature. The related concept of nonlocal steering was also the subject of Einstein's scrutiny in a letter to Edwin Schr\"{o}dinger \cite{Eins1935-6-19}, in which it is noted that a local description of steering necessitates nature to have what we would now call the $\psi$-epistemic property: that the quantum state is not instantiated as a part of nature's ontology.
+Since the inception of quantum mechanics, the apparent nonlocality of the theory has been a cornerstone of debate about the foundations of the theory. Einstein, together with Podolsky and Rosen \cite{EPR}, argued that nonlocality, in apparent contravention of the information-propagation bound of the speed of light from special relativity, was evidence of the incompleteness of the quantum-mechanical description of nature. The related concept of nonlocal steering, whereby a choice of measurement made by one party ``steers'' the partner's system to one of a pair of quantum states, was also the subject of Einstein's scrutiny in a letter to Edwin Schr\"{o}dinger \cite{Eins1935-6-19}, in which it is noted that a local description of steering necessitates nature to have what we would now call the $\psi$-epistemic property: that the quantum state is not instantiated as a part of nature's ontology.
 
-In this paper, we will consider ``Bell experiments'' of the classic form. Two experimenters have laboratories in separated locations, performing measurements on two quantum systems; each experimenter has a variety of measurements at their disposal, and once the measurements are done, they compare results. Quantum theory provides a framework in which the probability of the different outcomes, given the measurement settings chosen by each experimenter, can be calculated. In 1966, Bell showed that in some cases, the statistics predicted by quantum mechanics were incompatible with a notion of local realism; that each experimenter was performing measurements on a system with a definite state, independent of the measurement choices made at the other location \cite{Bell1966} When such an explanation in terms of local hidden variables is not possible, we would say that the distribution is \emph{nonlocal}, or demonstrates \emph{Bell nonlocality}. This motivates a natural decision problem: we are given a table of empirical data from such a Bell experiment, and asked to decide whether or not it constitutes a demonstration of nonlocality. 
+In this paper, we will consider ``Bell experiments'' of the classic form. Two experimenters have laboratories in separated locations, performing measurements on two quantum systems; each experimenter has a variety of measurements at their disposal, and once the measurements are done, they compare results. Quantum theory provides a framework in which the probability of the different outcomes, given the measurement settings chosen by each experimenter, can be calculated. In 1966, Bell showed that in some cases, the statistics predicted by quantum mechanics were incompatible with a notion of local realism: namely that each experimenter was performing measurements on a system with a definite state, independent of the measurement choices made at the other location \cite{Bell1966}. When such an explanation in terms of local hidden variables is not possible, we would say that the distribution is \emph{nonlocal}, or demonstrates \emph{Bell nonlocality}. This motivates a natural decision problem: we are given a table of empirical data from such a Bell experiment, and asked to decide whether or not it constitutes a demonstration of nonlocality. 
 
-In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether or not a given table of these operational predictions for a Bell experiment had a local hidden variable explanation was \textbf{NP}-hard, building on work by Pitowsky \cite{Pito1991}. In this paper, we consider a more extreme, possibilistic, manifestation of nonlocality; one in which it is not only true that we cannot account for the specific experimental probabilities with a local hidden variable model, but that we cannot even account for the possibilities. In doing so, we will identify the minimal operational requirements for this problem to remain \textbf{NP}-hard, filling in the final gap in a categorisation started by Mansfield and Fritz \cite{Mans2011,Mans2017} and continued by Abramsky, Gottlob, and Kolaitis \cite{Abra2013}. This nonlocality is a feature only of the table of possibilities at hand, with no dependence on the source of the correlations. Accordingly, the first sections of this paper will focus only on the decision problem at hand, and no knowledge about how such a table might be calculated within the formalism of quantum mechanics is required. In the final section, we turn our focus to those data tables accessible within quantum theory, and demonstrate how we can embed a large set of \textsc{3-SAT} problems into a quantum formalism.
+In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether or not a given table of these operational predictions for a Bell experiment had a local hidden variable explanation was \textbf{NP}-hard, building on work by Pitowsky \cite{Pito1991}. In this paper, we consider a more extreme, possibilistic, manifestation of nonlocality; one in which it is not only true that we cannot account for the specific experimental probabilities with a local hidden variable model, but that we cannot even account for the possibilities. In doing so, we will identify the minimal operational requirements for this problem to remain \textbf{NP}-hard, filling in the final gap in a categorisation started by Mansfield and Fritz \cite{Mans2011,Mans2017} and continued by Abramsky, Gottlob, and Kolaitis \cite{Abra2013}. This nonlocality is a feature only of the table of possibilities at hand, with no dependence on the source of the correlations. Accordingly, the first sections of this paper will focus only on the decision problem, and no knowledge about how such a table might be calculated within the formalism of quantum mechanics is required. In the final section, we turn our focus to those data tables accessible within quantum theory, and demonstrate how we can embed a large set of \textsc{3-SAT} problems into a quantum formalism.
 
 
 \section{Background}
 
-In a Bell experiment, two researchers, canonically referred to as Alice and Bob, are placed at spacelike separated locations and perform experiments on a pair of quantum systems that may have interacted in the past. Each of the experimenters can choose between a range of measurement selections: Alice chooses an $a\in A$, Bob chooses a $b\in B$. Alice's measurement can take different outcomes $\{1,2,\dots,l\}$, and Bob's has possible outcomes $\{1,2,\dots,m\}$. If Alice and Bob have $k$ different measurement choices, and each has a maximum of $l$ different measurement outcomes (that is, $l=m$), this is known as a $(2,k,l)$ scenario \cite{Mans2011,Abra2013}: there are two parties, with access to $k$ measurements, each with $l$ different outcomes. In this paper, we will focus on the cases where the measurements available to Alice have a different number of measurement outcomes to those of Bob.
+In a Bell experiment, two researchers, canonically referred to as Alice and Bob, are placed at spacelike separated locations and perform experiments on a pair of quantum systems that may have interacted in the past. Each of the experimenters can choose between a range of measurement selections: Alice chooses $a\in A$, Bob chooses $b\in B$. Alice's measurement can take different outcomes $\{0,1,2,\dots,l-1\}$, and Bob's has possible outcomes $\{0,1,2,\dots,m-1\}$. If Alice and Bob have $k$ different measurement choices, and each has a maximum of $l$ different measurement outcomes (that is, $l=m$), this is known as a $(2,k,l)$ scenario \cite{Mans2011,Abra2013}: there are two parties, with access to $k$ measurements, each with $l$ different outcomes. In this paper, we will focus on the cases where the measurements available to Alice have a different number of measurement outcomes to those of Bob.
 
-Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. We will refer to each of the measurement settings for Alice and Bob as a measurement row, or measurement column respectively. Within a measurement row or column, each measurement outcome is associated with a subrow or subcolumn. We will sometimes refer to the intersection of a measurement row and a measurement column, containing the outcome probabilities or possibilities for that setting, as a ``context''.
+Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given thechosen values of the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. We will refer to each of the measurement settings for Alice and Bob as a measurement row, or measurement column respectively. Within a measurement row or column, each measurement outcome is associated with a subrow or subcolumn. We will sometimes refer to the intersection of a measurement row and a measurement column, containing the outcome probabilities or possibilities for that setting, as a ``context''.
 
 
 
@@ -90,7 +90,7 @@ This table of probabilities can be converted into a table of possibilities via a
 \begin{equation}
 f(p)=\begin{cases} 1 \quad p\neq 0 \\ 0 \quad p=0, \end{cases}
 \end{equation}
-which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}. The remainder of this article will focus on this possibilistic case. We can consider such a possibility table as a function $T:A\times B \times \{1,\dots, l\}\times \{1,\dots, m\}\rightarrow\{0,1\}$, taking as its input the measurement settings for the two locations alongside a choice of a particular outcome event, and returning whether or not that event is possible or impossible. This can be thought of as a conditional possibility; the possibility of specific measurement outcomes given the choices of measurement setting.
+which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}. The remainder of this article will focus on this possibilistic case. We can consider such a possibility table as a function $T:A\times B \times \{0,\dots, l-1\}\times \{0,\dots, m-1\}\rightarrow\{0,1\}$, taking as its input the measurement settings for the two locations alongside a choice of a particular outcome event, and returning whether or not that event is possible or impossible. This can be thought of as a conditional possibility: the possibility of specific measurement outcomes given the choices of measurement setting.
 
 Given a table of probabilities or possibilities as shown above, there are two questions of particular foundational relevance that we might consider: whether the table provides an example of \emph{signalling}, and if not, whether it still provides an example of nonlocality.
 
@@ -107,7 +107,7 @@ a_1=1&0&0 &1 &1\\ \hline
 \label{sig}
 \end{figure}
 
-If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can restrict our gaze to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. Following Mansfield and Fritz \cite{Mans2011}, we say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables that obey a no-signalling restriction. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables. Figure \ref{localtable} demonstrates a simple example of a table that is local, as it permits a decomposition into grids corresponding to deterministic local hidden variables.
+If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can, without loss of generality, restrict our attention to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. We say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables that obey a no-signalling restriction. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables. Figure \ref{localtable} demonstrates a simple example of a table that is local, as it permits a decomposition into grids corresponding to deterministic local hidden variables.
 
 \begin{figure}
 \begin{equation*}
@@ -141,16 +141,23 @@ In 1993, Hardy \cite{Hard1993} demonstrated that the table in Figure \ref{HardyP
 
 
 \begin{figure}
-\begin{equation*}
+\begin{equation*}\mbox{a)} \enspace
 \begin{array}{c| c c | c c |}
 &&&&\\ \hline
 &1 &1  &0 & 1\\
 &1&1  &1&1\\ \hline
 &0&1&1&1 \\
 &1&1 &1 &0 \\ \hline
+\end{array}\quad\quad \mbox{b)} \enspace
+\begin{array}{c| c c | c c |}
+&&&&\\ \hline
+&1 & & 0 & \\
+&& & & \\ \hline
+&0& & &  \\
+&& & & 0 \\ \hline
 \end{array}
 \end{equation*}
-\caption{The table of possibilities for the Hardy paradox.}
+\caption{Tables of possibilities for the Hardy paradoxes: first, a complete table of possibilities; second, a more general presentation in which blank spaces can be replaced with either 1 or 0.}
 \label{HardyParadox}
 \end{figure}
 
@@ -179,17 +186,9 @@ This represents a two-party nonlocality scenario in which Alice has access to me
 2-\textsc{PossLoc} is in \textbf{P}.
 \end{thm}
 \begin{proof}
-This proof proceeds by showing that the only kind of possibilistic nonlocality that can occur in the two-outcome case is the one originally identified by Hardy \cite{Hard1993}; that is to say, a feature of the following kind, in which a blank space can be substituted either for a 0 or for a 1:
-\begin{equation*}
-\begin{array}{c| c c | c c |}
-&&&&\\ \hline
-&1 & & 0 & \\
-&& & & \\ \hline
-&0& & &  \\
-&& & & 0 \\ \hline
-\end{array}
-\end{equation*}
-We can quickly see that the highlighted one is impossible to extend to a ``deterministic grid'', \emph{i.e.} no single deterministic hidden variable can account for that possibility without also introducing an event that is impossible in the diagram. Since the appearance of this structure is equivalent to possibilistic nonlocality in this case, an algorithm to determine whether or not a given data table is possibilistically local or nonlocal reduces to checking each possible set of four contexts of this type, of which there are $n^2(n-1)^2/4$. Since checking for the appearance of such structures is possible in constant time, our algorithm runs in $O(n^4)$.
+This proof proceeds by showing that the only kind of possibilistic nonlocality that can occur in the two-outcome case is the one originally identified by Hardy \cite{Hard1993}, as depicted in Figure \ref{HardyParadox} (b); a table is nonlocal if and only if it contains an example of the Hardy paradox.
+
+Since the appearance of this structure is equivalent to possibilistic nonlocality in this case, an algorithm to determine whether or not a given data table is possibilistically local or nonlocal reduces to checking each possible set of four contexts for the structure. There are $n^2(n-1)^2/4$ contexts, so since checking for the appearance of the Hardy paradox is possible in constant time, our algorithm runs in $O(n^4)$.
 \end{proof}
 However, this argument is specific to the case in which we have measurements with at most two outcomes on each side. As an illustration that there are quantumly-accessible nonlocal data tables that are not reducible to a fine-graining of a Hardy paradox, we will now demonstrate a novel possibilistic nonlocality scenario in the (2,3) case. This will be a generalisation of Hardy's proof of Bell's theorem.
 
@@ -256,17 +255,19 @@ We now present this paradox minimally, demonstrating that it is neither a Hardy 
   &&&&&&&&0\\ \hline
 \end{array}
 \end{equation*}
-We see that in some sense this can be thought of as a generalisation of Hardy's paradox. The third measurement row acts to convert the two right-hand measurement columns into a single effective column identical to that of the standard Hardy paradox, since we see that in any deterministic, no-signalling grid containing the highlighted ``1'' entry, we cannot have that both measurement columns 2 and 3 have their 1 entries in the rightmost subcolumn. With this rightmost column effectively eliminated, we are left with the form of the Hardy paradox. We note also that this family of no-signalling distributions has a supremum value of the \emph{paradoxical probability} (the maximum probability of a measurement witnessing a Hardy paradox) of $\nicefrac{1}{2}$. This is a large value compared to other known situations with a fixed number of outcomes, a fixed quantum dimension, and a fixed number of measurements: the paradoxical probability for Hardy's own construction is roughly 0.09 \cite{Hard1993}. This probability can be met by scenarios with two parties with access to $k$ different 2-outcome measurements, or by a generalised no-signalling theory \cite{Mans2017}. Quantum mechanically, this probability is given by $p|\cos(\theta(A, b^\perp)|^2$, where $\theta(A, b^\perp)$ is the angle subtended at the centre of the circle by $A$ and $b^\perp$, and $p$ is the ratio of the distance between $\rho$ and $a$ to the distance between $\rho$ and $A$. We see that we can move $\rho$ arbitrarily close to the centre of the circle, and $A$ arbitrarily close to $b^\perp$ to achieve a value of $\nicefrac12$ without changing the topology of the diagram. %move this proof to an appendix and make it rigorous.
+We see that in some sense this can be thought of as a generalisation of Hardy's paradox. The third measurement row acts to convert the two right-hand measurement columns into a single effective column identical to that of the standard Hardy paradox, since we see that in any deterministic, no-signalling grid containing the highlighted ``1'' entry, we cannot have that both measurement columns 2 and 3 have their 1 entries in the rightmost subcolumn. With this rightmost column effectively eliminated, we are left with the form of the Hardy paradox. We note also that this family of no-signalling distributions has a supremum value of the \emph{paradoxical probability} (the maximum probability of a measurement witnessing a Hardy paradox) of $\nicefrac{1}{2}$. This is a large value compared to other known situations with a fixed number of outcomes, a fixed quantum dimension, and a fixed number of measurements: the paradoxical probability for Hardy's own construction is roughly 0.09 \cite{Hard1993}. The proof of this can be found in Appendix \ref{app}.
+
+%This probability can be met by scenarios with two parties with access to $k$ different 2-outcome measurements, or by a generalised no-signalling theory \cite{Mans2017}. Quantum mechanically, this probability is given by $p|\cos(\theta(A, b^\perp)|^2$, where $\theta(A, b^\perp)$ is the angle subtended at the centre of the circle by $A$ and $b^\perp$, and $p$ is the ratio of the distance between $\rho$ and $a$ to the distance between $\rho$ and $A$. We see that we can move $\rho$ arbitrarily close to the centre of the circle, and $A$ arbitrarily close to $b^\perp$ to achieve a value of $\nicefrac12$ without changing the topology of the diagram. %move this proof to an appendix and make it rigorous.
 
 
 \section{\textsc{(2,3)-PossLoc} is \textbf{NP}-complete}
 
-It is easy to see that $(j,k)$-\textsc{PossLoc} is in \textbf{NP}; to show that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. It is clear to see that such a witness is only polynomially-sized, and can be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky, Gottlob, and Kolaitis showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
+We can see that $(l,m)$-\textsc{PossLoc} is in \textbf{NP}; to demonstrate that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. Such a witness is only polynomially-sized, since there are only polynomially many 1 entries and each data table is polynomially sized; that they sum to the table in question can also be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky, Gottlob, and Kolaitis showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
 
 We will demonstrate that $(2,3)$-\textsc{PossLoc} is \textbf{NP}-complete. First, we will introduce, following Abramsky, Gottlob and Kolaitis, the concept of a robust satisfiability problem; we will then demonstrate the \textbf{NP}-completeness of a specific family of robust satisfaction problems, and show a polynomial-time embedding of such problems into $(2,3)$-\textsc{PossLoc}.
 
 \begin{defn}[$r$-\textsc{Robust} satisfiability problems]	
-Following Abramsky, Gottlob, and Kolaitis we shall define, for a satisfiability decision problem \textsc{P}, the problem $r$-\textsc{Robust P} to be the decision problem that, given an instance of \textsc{P}, asks whether or not every assignment of $r$ variables in the problem that do not directly cause one of the clauses to be false, can be extended to a satisfying assignment of the problem.
+For a satisfiability decision problem \textsc{S}, the problem $r$-\textsc{Robust S} to be the decision problem that, given an instance of \textsc{S}, asks whether or not every assignment of $r$ variables in the problem that do not directly cause one of the clauses to be false, can be extended to a satisfying assignment of the problem.
 \end{defn}
 
 \begin{thm}
@@ -289,11 +290,14 @@ f(l_1\cup l_2 \vee  \circ  l_3) = (l_1\vee l_2 \vee \circ l_3 \vee \neg x),
 \begin{equation}
 f(\neg l_1\vee\neg l_2 \vee \circ  l_3) = (\neg l_1\cup\neg l_2 \vee \circ  l_3 \vee  y),
 \end{equation}
-in which the $\circ$ symbol is being used to denote the presence or absence of a $\neg$ symbol. By the pigeonhole principle, each clause must contain either at least two positive literals, or at least two negated literals, and so this mapping is defined uniquely between \textsc{3-SAT} and \textsc{4-SAT} instances. We note that now, every clause of $C'=\bigwedge_i f(c_i)$ contains at least one positive literal and at least one negative literal, and so $C'$ is both 0-valid and 1-valid.
+in which the $\circ$ symbol is being used to denote the presence or absence of a $\neg$ symbol. By the pigeonhole principle, each clause must contain either at least two positive literals, or at least two negated literals, and so $f$ is total. We note that now, every clause of $C'=\bigwedge_i f(c_i)$ contains at least one positive literal and at least one negative literal, and so $C'$ is both 0-valid and 1-valid.
 
 We note that it is possible now to convert this 4-SAT instance back to a \textsc{3-SAT} instance by the following procedure, mapping each clause to a pair of equisatisfiable clauses (which we will refer to as an effective clause):
 \begin{equation}
-(\circ l_1\cup\circ l_2 \vee  \circ  l_3 \vee x) \rightarrow (\circ l_1\cup\circ l_2 \vee z)\wedge(\neg z \vee \circ  l_3 \vee x)
+(\circ l_1\cup\circ l_2 \vee  \circ  l_3 \vee \neg x) \rightarrow (\circ l_1\cup\circ l_2 \vee z)\wedge(\neg z \vee \circ  l_3 \vee\neg x)
+\end{equation}
+\begin{equation}
+(\circ l_1\cup\circ l_2 \vee  \circ  l_3 \vee y) \rightarrow (\circ l_1\cup\circ l_2 \vee z)\wedge(\neg z \vee \circ  l_3 \vee y)
 \end{equation}
 
  We note also that this adjustment maintains 0-validity and 1-validity, since we can choose an order on the $\{\circ l_i\}$ such that each of the two clauses in the effective clause contain a positive and a negative literal. We note that since each effective clause contains either $\neg x$ or $y$, setting $x$ to 0 and $y$ to 1 leads to a satisfying assignment for any assignment choices of the other variables. 
@@ -309,10 +313,11 @@ We can now verify that this transformed scenario is \textsc{2-Robust}ly satisfia
 Therefore, since \textsc{3-SAT} is \textbf{NP}-hard, so is \textsc{2-Robust 0-valid 1-valid 3-SAT}. It is in \textbf{NP} since there are only $O(n^2)$ different pairs of variables to set, and so the witness size to demonstrate a set of assignments that display robustness is still only polynomially sized.  Hence,  \textsc{2-Robust 0-valid 1-valid 3-SAT} is \textbf{NP}-complete.
 
 \end{proof}
+We note that a stronger version of this result was independently derived by Ham \ref{Ham2017}.
 \begin{cor}
 \textsc{2-Robust 3-SAT} is \textbf{NP}-complete.
 \end{cor}
-We note now that we will in fact only need the fact that \textsc{2-Robust 3-SAT} is \textbf{NP}-complete for the rest of this proof; the motivation for having proven that the \textsc{0-valid 1-valid} is also \textbf{NP}-complete will become apparent when considering which of these possibility tables are realisable within quantum mechanics.
+We note now that we will in fact only need the fact that \textsc{2-Robust 3-SAT} is \textbf{NP}-complete for the rest of this proof; the motivation for having proven that the \textsc{0-valid 1-valid} is also \textbf{NP}-complete will become apparent when considering which of these possibility tables are realisable within quantum mechanic in Section \label{QR}.
 
 \begin{lem}\label{nplem}
 There is a polynomial-time embedding of \textsc{2-Robust 3-SAT} into \textsc{(2,3)-PossLoc}.
@@ -325,7 +330,7 @@ The reduction algorithm is as follows:
 \item For each clause in the \textsc{2-Robust 3-SAT} instance, we add a measurement to the party with three-outcome measurements available to them; these are our measurement columns. This is a departure from the strategy of Abramsky, Gottlob, and Kolaitis, whose constructions have a direct symmetry between the rows and columns.
 
 \item For each intersection of a variable row and clause column, such that the variable is represented positively in the clause, we have the measurement possibilities given by:
-\begin{equation}
+\begin{equation*}
 \begin{array}{  | c c  c|}
 \hline
  0 & 1 & 1 \\
@@ -342,11 +347,11 @@ The reduction algorithm is as follows:
  1 & 1 & 0\\
  1 & 1& 1 \\ \hline
  \end{array}\, ,
- \end{equation}
+ \end{equation*}
 depending on whether the variable is the first, second, or third variable in the clause with respect to our variable ordering.
 
 \item For each intersection of a variable row and clause column, such that the variable is represented negatively in the clause, we have the measurement possibilities given by:
-\begin{equation}
+\begin{equation*}
 \begin{array}{  | c c  c|}
 \hline
  1 & 1 & 1 \\
@@ -363,7 +368,7 @@ depending on whether the variable is the first, second, or third variable in the
  1 & 1 & 1\\
  1 & 1& 0 \\ \hline
  \end{array}\, ,
- \end{equation}
+ \end{equation*}
 depending on whether the variable is the first, second, or third variable in the clause with respect to our variable ordering.
 \end{itemize}
 We can see that choices of subrow in a measurement row is equivalent to an assignment of that variable, and that the clause structure effectively bans the assignment disallowed by that specific clause, for example the clause $(x_1 \vee x_2 \vee x_3)$ corresponds to the possibility table
@@ -387,8 +392,8 @@ We see we cannot simultaneously assign a 1 to each of the top subrows as part of
 Therefore, since \textsc{2-Robust 3-SAT} is \textbf{NP}-hard; any instance of \textsc{2-Robust 3-SAT} can be reduced to an instance of \textsc{(2,3)-PossLoc} in polynomial time; and \textsc{(2,3)-PossLoc} is in \textbf{NP}, \textsc{(2,3)-PossLoc} is \textbf{NP}-complete.
 \end{proof}
 
-\section{Quantum realisation}
-We should note at this point that all the above proofs are for generalised no-signalling distributions. When we restrict ourselves to quantumly accessible distributions, all these problems become open.
+\section{Quantum realisation}\label{QR}
+Thus far in the paper we have cared only about whether or not a given table was achievable within the set of no-signalling theories, rather than whether or not it could arise from a particular quantum mechanical scenario. When we restrict ourselves to quantumly accessible distributions, all these problems become open.
 
 
 \begin{thm}
@@ -401,10 +406,7 @@ We note that each measurement column corresponds to a three-element POVM, and as
 
 We note that each variable is associated with two POVM elements, one representing positive occurrences of the variable, the other representing the negative occurrences of the variable; since the union of the supports of such a pair is the whole Hilbert space, at least one of these must have support in our chosen hypersphere and we choose one such POVM element to represent the positive occurrences. Now, if we chose our hemi-hypersphere such that no POVM elements lie on its equator, which is always possible since there are only finitely many POVM elements, then we see that each triple must have at least one POVM element from that half of the Hilbert space. Each clause therefore contains at least one positively-represented variable and so the all-true assignment of the variables is a satisfying assignment. Additionally, the opposite holds and so the all-false assignment of the variables is satisfied also after this transformation has taken place. %Make this paragraph more clear.
 \end{proof}
-We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We shall see however, that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard.
-
-
-We see that we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We have also seen that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here. 
+We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We have seen that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard; we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We shall see that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: for instance, one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here. 
 \begin{figure}
 \begin{equation*} 
 \begin{array}{  | c c  c| c c c|}
@@ -537,6 +539,11 @@ I would like to thank Terry Rudolph and Georg Gottlob for multiple helpful discu
 
 \bibliography{/Users/andrewsimmons/Documents/Latex/Bib/bibliography}{}
 \bibliographystyle{plain}
+
+\appendix
+\section{Paradoxical Probability}
+
+ADASDASD
 
 \end{document}
 
