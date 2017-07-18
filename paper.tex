@@ -255,7 +255,7 @@ We now present this paradox minimally, demonstrating that it is neither a Hardy 
   &&&&&&&&0\\ \hline
 \end{array}
 \end{equation*}
-We see that in some sense this can be thought of as a generalisation of Hardy's paradox. The third measurement row acts to convert the two right-hand measurement columns into a single effective column identical to that of the standard Hardy paradox, since we see that in any deterministic, no-signalling grid containing the highlighted ``1'' entry, we cannot have that both measurement columns 2 and 3 have their 1 entries in the rightmost subcolumn. With this rightmost column effectively eliminated, we are left with the form of the Hardy paradox. We note also that this family of no-signalling distributions has a supremum value of the \emph{paradoxical probability} (the maximum probability of a measurement witnessing a Hardy paradox) of $\nicefrac{1}{2}$. This is a large value compared to other known situations with a fixed number of outcomes, a fixed quantum dimension, and a fixed number of measurements: the paradoxical probability for Hardy's own construction is roughly 0.09 \cite{Hard1993}. The proof of this can be found in Appendix \ref{app}.
+We see that in some sense this can be thought of as a generalisation of Hardy's paradox. The third measurement row acts to convert the two right-hand measurement columns into a single effective column identical to that of the standard Hardy paradox, since we see that in any deterministic, no-signalling grid containing the highlighted ``1'' entry, we cannot have that both measurement columns 2 and 3 have their 1 entries in the rightmost subcolumn. With this rightmost column effectively eliminated, we are left with the form of the Hardy paradox. %We note also that this family of no-signalling distributions has a supremum value of the \emph{paradoxical probability} (the maximum probability of a measurement witnessing a Hardy paradox) of $\nicefrac{1}{2}$. This is a large value compared to other known situations with a fixed number of outcomes, a fixed quantum dimension, and a fixed number of measurements: the paradoxical probability for Hardy's own construction is roughly 0.09 \cite{Hard1993}. The proof of this can be found in Appendix \ref{app}.
 
 %This probability can be met by scenarios with two parties with access to $k$ different 2-outcome measurements, or by a generalised no-signalling theory \cite{Mans2017}. Quantum mechanically, this probability is given by $p|\cos(\theta(A, b^\perp)|^2$, where $\theta(A, b^\perp)$ is the angle subtended at the centre of the circle by $A$ and $b^\perp$, and $p$ is the ratio of the distance between $\rho$ and $a$ to the distance between $\rho$ and $A$. We see that we can move $\rho$ arbitrarily close to the centre of the circle, and $A$ arbitrarily close to $b^\perp$ to achieve a value of $\nicefrac12$ without changing the topology of the diagram. %move this proof to an appendix and make it rigorous.
 
@@ -406,7 +406,7 @@ We note that each measurement column corresponds to a three-element POVM, and as
 
 We note that each variable is associated with two POVM elements, one representing positive occurrences of the variable, the other representing the negative occurrences of the variable; since the union of the supports of such a pair is the whole Hilbert space, at least one of these must have support in our chosen hypersphere and we choose one such POVM element to represent the positive occurrences. Now, if we chose our hemi-hypersphere such that no POVM elements lie on its equator, which is always possible since there are only finitely many POVM elements, then we see that each triple must have at least one POVM element from that half of the Hilbert space. Each clause therefore contains at least one positively-represented variable and so the all-true assignment of the variables is a satisfying assignment. Additionally, the opposite holds and so the all-false assignment of the variables is satisfied also after this transformation has taken place. %Make this paragraph more clear.
 \end{proof}
-We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We have seen that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard; we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem. We shall see that we can embed some \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: for instance, one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here. 
+We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We have seen that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard; we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem, but that we can embed \emph{some} \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: for instance, one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here. 
 \begin{figure}
 \begin{equation*} 
 \begin{array}{  | c c  c| c c c|}
@@ -541,9 +541,32 @@ I would like to thank Terry Rudolph and Georg Gottlob for multiple helpful discu
 \bibliographystyle{plain}
 
 \appendix
+\iffalse
 \section{Paradoxical Probability}
 
-ADASDASD
+Above, it was claimed that the family of quantum scenarios that give rise to the possibility table
+\begin{equation*}
+\begin{array}{ c | c c | c c c| c c c|}
+&&&&&&&& \\ \hline
+&1&&0&&&0&&\\
+   &&&&&&&&\\ \hline
+   &0&&&&&&&\\ 
+  &&&&0&&&0&\\ \hline
+  &&&&&0&&&\\ 
+  &&&&&&&&0\\ \hline
+\end{array}
+\end{equation*}
+has a supremal paradoxical probability of $\nicefrac12$. We shall now demonstrate that this is the case.
+
+Referring back to Figure \ref{steer}, we can achieve a value arbitrarily close to $\nicefrac{12}$ by moving $\rho$ close to the completely mixed state,and then maximising the overlap between $\ket{b^\perp}$ and $\ket{A}$ while maintaining that $\{\ket{A},\ket{B},\ket{x}\}$ $\{\ket{A},\ket{B},\ket{y}\}$ still contain the centre of the circle in their convex hull.
+
+We first take an entangled state which leads to marginal states close to the mixed state:
+\begin{equation}
+\ket{\Psi}_{AB}=\sqrt{\frac{1}{2}+\epsilon_0}\ket{00}+\sqrt{\frac{1}{2}-\epsilon_0}\ket{11}.
+\end{equation}
+
+\fi
+
 
 \end{document}
 
