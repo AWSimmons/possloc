@@ -25,6 +25,7 @@
 \newtheorem{lem}{Lemma}
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\supp}{supp}
 \newcommand{\ket}[1]{{\left\vert{#1}\right\rangle}}
@@ -45,12 +46,12 @@
 \author{Andrew W. Simmons}\affiliation{Department of Physics, Imperial College London, SW7 2AZ.}
 \email{andrew@simmons.co.uk}
 \begin{abstract}
-The proofs of quantum nonlocality due to Greenberger, Horne, and Zeilinger; and due to Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system; in a physical theory, some outcomes of this experiment will be considered possible, others impossible, and an assigment of the values 0 (possible) and 1 (impossible) to these different outcomes forms a \emph{table of possibilities}. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
+The proofs of quantum nonlocality due to Greenberger, Horne, and Zeilinger; and due to Hardy are qualitatively different from that of Bell insofar as they rely only on a consideration of whether events are possible or impossible, rather than relying on specific experimental probabilities. We consider the scenario of a bipartite nonlocality experiment, in which two separated experimenters each have access to some measurements they can perform on a system. In a physical theory, some outcomes of this experiment will be labelled possible, others impossible, and an assigment of the values 0 (impossible) and 1 (possible) to these different outcomes forms a \emph{table of possibilities}. Here, we consider the computational task of determining whether or not a given table of possibilities constitutes a departure from possibilistic local realism. By considering the case in which one party has access to measurements with two outcomes and the other three, it is possible to see at exactly which point this task becomes computationally difficult.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
-Since the inception of quantum mechanics, the apparent nonlocality of the theory has been a cornerstone of debate about the foundations of the theory. Einstein, together with Podolsky and Rosen \cite{EPR}, argued that nonlocality, in apparent contravention of the information-propagation bound of the speed of light from special relativity, was evidence of the incompleteness of the quantum-mechanical description of nature. The related concept of nonlocal steering, whereby a choice of measurement made by one party ``steers'' the partner's system to one of a pair of quantum states, was also the subject of Einstein's scrutiny in a letter to Edwin Schr\"{o}dinger \cite{Eins1935-6-19}, in which it is noted that a local description of steering necessitates nature to have what we would now call the $\psi$-epistemic property: that the quantum state is not instantiated as a part of nature's ontology.
+Since the inception of quantum mechanics, the apparent nonlocality of the theory has been a cornerstone of debate about the foundations of the theory. Einstein, together with Podolsky and Rosen \cite{EPR}, argued that nonlocality, in apparent contravention of the information-propagation bound of the speed of light from special relativity, was evidence of the incompleteness of the quantum-mechanical description of nature. The related concept of nonlocal steering, whereby a choice of measurement made by one party ``steers'' the partner's system to one of a pair of quantum states, was also the subject of Einstein's scrutiny in a letter to Edwin Schr\"{o}dinger \cite{Eins1935-6-19}, in which it is noted that a local description of steering necessitates nature to have what we would now call the $\psi$-epistemic property: that the quantum state is not instantiated as a part of nature's ontology \cite{HR2007, SimmCW}.
 
 In this paper, we will consider ``Bell experiments'' of the classic form. Two experimenters have laboratories in separated locations, performing measurements on two quantum systems; each experimenter has a variety of measurements at their disposal, and once the measurements are done, they compare results. Quantum theory provides a framework in which the probability of the different outcomes, given the measurement settings chosen by each experimenter, can be calculated. In 1966, Bell showed that in some cases, the statistics predicted by quantum mechanics were incompatible with a notion of local realism: namely that each experimenter was performing measurements on a system with a definite state, independent of the measurement choices made at the other location \cite{Bell1966}. When such an explanation in terms of local hidden variables is not possible, we would say that the distribution is \emph{nonlocal}, or demonstrates \emph{Bell nonlocality}. This motivates a natural decision problem: we are given a table of empirical data from such a Bell experiment, and asked to decide whether or not it constitutes a demonstration of nonlocality. 
 
@@ -61,7 +62,7 @@ In 1991, Avis \emph{et al} \cite{Avis2004} demonstrated that determining whether
 
 In a Bell experiment, two researchers, canonically referred to as Alice and Bob, are placed at spacelike separated locations and perform experiments on a pair of quantum systems that may have interacted in the past. Each of the experimenters can choose between a range of measurement selections: Alice chooses $a\in A$, Bob chooses $b\in B$. Alice's measurement can take different outcomes $\{0,1,2,\dots,l-1\}$, and Bob's has possible outcomes $\{0,1,2,\dots,m-1\}$. If Alice and Bob have $k$ different measurement choices, and each has a maximum of $l$ different measurement outcomes (that is, $l=m$), this is known as a $(2,k,l)$ scenario \cite{Mans2011,Abra2013}: there are two parties, with access to $k$ measurements, each with $l$ different outcomes. In this paper, we will focus on the cases where the measurements available to Alice have a different number of measurement outcomes to those of Bob.
 
-Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given thechosen values of the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. We will refer to each of the measurement settings for Alice and Bob as a measurement row, or measurement column respectively. Within a measurement row or column, each measurement outcome is associated with a subrow or subcolumn. We will sometimes refer to the intersection of a measurement row and a measurement column, containing the outcome probabilities or possibilities for that setting, as a ``context''.
+Each combination of measurement settings and measurement outcomes corresponds to an event, and quantum mechanics gives us the ability to calculate the probabilities that a specific pair of measurement outcomes will be observed, given the chosen values of the measurement settings. We can present these in a table, for example in Figure \ref{CHSH}. We will follow the notation of Mansfield and Fritz for these tables, in which each row and column denotes a measurement outcome, and the intersection of a row and column is the probability of that outcome within the contexts, which are separated by lines.  For example, if Alice chooses measurement setting $A_2$, and Bob chooses measurement setting $B_1$, then we see from the table that the probability of seeing the outcome $(a_2=0, b_2=1)$ is $\nicefrac38$. We will refer to each of the measurement settings for Alice and Bob as a measurement row, or measurement column respectively. Within a measurement row or column, each measurement outcome is associated with a subrow or subcolumn. We will sometimes refer to the intersection of a measurement row and a measurement column, containing the outcome probabilities or possibilities for that setting, as a ``context''.
 
 
 
@@ -90,9 +91,9 @@ This table of probabilities can be converted into a table of possibilities via a
 \begin{equation}
 f(p)=\begin{cases} 1 \quad p\neq 0 \\ 0 \quad p=0, \end{cases}
 \end{equation}
-which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}. The remainder of this article will focus on this possibilistic case. We can consider such a possibility table as a function $T:A\times B \times \{0,\dots, l-1\}\times \{0,\dots, m-1\}\rightarrow\{0,1\}$, taking as its input the measurement settings for the two locations alongside a choice of a particular outcome event, and returning whether or not that event is possible or impossible. This can be thought of as a conditional possibility: the possibility of specific measurement outcomes given the choices of measurement setting.
+which acts as a homomorphism between the normal probability semiring $\mathbb{R}_+$, and the Boolean semiring on $\{0,1\}$. The result of such a collapse applied to the CHSH scenario is also presented in Figure \ref{CHSH}. The remainder of this article will focus on this possibilistic case. We can consider such a possibility table as a function $T:A\times B \times \{0,\dots, l-1\}\times \{0,\dots, m-1\}\rightarrow\{0,1\}$, taking as its input the measurement settings for the two locations alongside a choice of a particular outcome event, and returning whether or not that event is possible or impossible. This can be thought of as a conditional possibility $P(L,M|A,B)$: the possibility of specific measurement outcomes given the choices of measurement setting.
 
-Given a table of probabilities or possibilities as shown above, there are two questions of particular foundational relevance that we might consider: whether the table provides an example of \emph{signalling}, and if not, whether it still provides an example of nonlocality.
+Given a table of probabilities or possibilities as shown above, there are two questions of particular foundational relevance that we might consider: whether the table provides an example of \emph{signalling}, and if not, whether it still provides an example of nonlocality\footnote{In any real experiment, due to noise it is likely that the table of observed data might look like a signalling data table. Valid notions of nonlocality and contextuality in this setting have been explored, for example by Dzafharov \emph{et al}\cite{Dzha2016}. However, in this paper we are dealing with possibilistic idealisations of data, and so we will ask that the tables obey a (possibilistic) no-signalling restriction exactly.}. 
 
 The notion of signalling encapsulates the idea that a particular distribution could be used as a resource to superluminally signal information between the two parties. An example of a signalling situation is demonstrated in Figure \ref{sig}. We will focus on \emph{no-signalling} tables, which cannot be used for signalling; all quantum-mechanically accessible tables are of this type. In terms of how our tables are constructed, this means that if a sub-row (sub-column) contains a 1, then it must contain a 1 in every column (row); if a measurement outcome is possible, then it is possible no matter which measurement choice is made at the other site.
 \begin{figure}
@@ -107,7 +108,7 @@ a_1=1&0&0 &1 &1\\ \hline
 \label{sig}
 \end{figure}
 
-If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By Fine's theorem \cite{Fine1982}, we can, without loss of generality, restrict our attention to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. We say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables that obey a no-signalling restriction. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables. Figure \ref{localtable} demonstrates a simple example of a table that is local, as it permits a decomposition into grids corresponding to deterministic local hidden variables.
+If a probability or possibilitity distribution is nonlocal, it means that it cannot arise from a local hidden variables theory; any model for the process in which each of the separated quantum systems are considered to have their own internal state, independent of choices made in at the other experimental location cannot reproduce the correct statistics. By an extension of Fine's theorem due to Abramsky and Brandenburger \cite{Fine1982, Abra2011-b}, we can, without loss of generality, restrict our attention to deterministic hidden variable theories, where in every measurement context there is a single 1 entry. We say that a table is \emph{local} if it can be decomposed into a mixture of deterministic tables that obey a no-signalling restriction. The mixture of two tables $T_1$ and $T_2$ is defined to be the sum $T_1+T_2$, where addition is performed in the Boolean semiring. Intuitively, an outcome is possible in the mixture of two tables if and only if it is possible in at least one of those tables. Figure \ref{localtable} demonstrates a simple example of a table that is local, as it permits a decomposition into grids corresponding to deterministic local hidden variables.
 
 \begin{figure}
 \begin{equation*}
@@ -179,7 +180,7 @@ These considerations motivate a decision problem: does a given a table of possib
 \quad\\
 Instance: a possibilistic table of data represented by a  function $T:A\times B \times \{1,\dots, l\}\times \{1,\dots, m\}\rightarrow\{0,1\}$.
 
-Question: does there exist a set of functions $T_i$, such that the $T_i$ are deterministic, and $T=\sum_i T_i$?
+Question: does there exist a set of functions $T_i$, such that the $T_i$ are no-signalling, deterministic, and $T=\sum_i T_i$?
 \end{defn}
 This represents a two-party nonlocality scenario in which Alice has access to measurements with $m$ outcomes, and Bob has access to measurements with $l$ outcomes. We are given a possibility table and asked whether or not it displays nonlocality. In general, we will take $|A|=|B|=n$ to maintain a single scaling factor; in fact this change is without loss of generality. In the case where $l=m$, we will denote this problem merely $l$-\textsc{PossLoc}. While it is not essential, we will also require that the data tables obey the possibilistic no-signalling principle; this merely streamlines the wording of the theorems. 
 \begin{thm} \cite{Mans2017}
@@ -229,7 +230,8 @@ However, this argument is specific to the case in which we have measurements wit
 
 
 Figure \ref{steer} shows an equatorial slice of the Bloch sphere, and a set of states of Bob's system to which he can be ``steered'' by Alice.  The Bloch sphere is a representation of the state space of a quantum system of dimension $2$ as a sphere, in which two orthogonal quantum states are mapped to antipodal points on the sphere; this mapping is a case of the Hopf fibration. Taking an equatorial slice can be thought of as restricting to the case of \emph{rebits}, states that can be represented as vectors over $\mathbbm{R}^2$ rather than $\mathbbm{C}^2$.
-For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. For clarity, points antipodal to those that Alice can steer Bob to are not shown in Figure \ref{steer}. Constructing the possibility table for this steering scenario reveals the following structure in a subset of the table:
+For each pair of points on the circle, the line between which goes through $\rho$, there is a measurement that Alice can perform such that if she gets one outcome, Bob's system is left in the state corresponding to one of the points, and if she gets the other, Bob's system is left in the other. As such, we can associate Alice's measurements with such pairs of points, which are said to be \emph{decompositions} of $\rho$. The measurements Bob can perform on the state manifest themselves in two ways in the diagram. Any set of points such that the centre of the circle is in their convex hull is a valid POVM measurement for Bob; we will restrict him to measurements with either 2 or 3 outcomes, so his measurements are either a pair of antipodal points, or a triple with the centre in their convex hull. Impossible events occur when Bob's system is steered to a state $\psi$, and a measurement is performed that contains the element $\psi^\perp$, the point antipodal to $\psi$ on the circle. For clarity, points antipodal to those that Alice can steer Bob to are not shown in Figure \ref{steer}. Constructing the possibility table for this steering scenario reveals the structure presented in Figure \ref{novelArray}.
+\begin{figure}
 \begin{equation*}
 \begin{array}{ c  | c c | c c c| c c c|}\
   & b&b^\perp& A^\perp &B^\perp&x^\perp& A^\perp &B^\perp&y^\perp \\ \hline
@@ -241,9 +243,14 @@ For each pair of points on the circle, the line between which goes through $\rho
  y &1&1&1&1&1&1&1&0\\ \hline
 \end{array}
 \end{equation*}
+\caption{A generalised Hardy paradox available for a two qubit measurement, with a two-outcome projective measurement at one site and a three-outcome POVM measurement at the other.}
+\label{novelArray}
+\end{figure}
 The measurement rows denote pairs of states to which Alice can steer Bob; the measurement columns represent measurements that Bob is able to perform.
-We now present this paradox minimally, demonstrating that it is neither a Hardy paradox, nor a fine-graining of a Hardy paradox. Therefore, the Hardy paradox is not universal even for quantumly-accessible possibilistic nonlocality as long as one party has access to three-outcome measurements. 
+We now present this paradox minimally, demonstrating that it is neither a Hardy paradox, nor a fine-graining of a Hardy paradox. Therefore, the following statement holds:
 
+\begin{prop}The Hardy paradox is not universal even for quantumly-accessible possibilistic nonlocality as long as one party has access to three-outcome measurements. 
+\end{prop}
 \begin{equation*}
 \begin{array}{ c | c c | c c c| c c c|}
 &&&&&&&& \\ \hline
@@ -255,14 +262,14 @@ We now present this paradox minimally, demonstrating that it is neither a Hardy 
   &&&&&&&&0\\ \hline
 \end{array}
 \end{equation*}
-We see that in some sense this can be thought of as a generalisation of Hardy's paradox. The third measurement row acts to convert the two right-hand measurement columns into a single effective column identical to that of the standard Hardy paradox, since we see that in any deterministic, no-signalling grid containing the highlighted ``1'' entry, we cannot have that both measurement columns 2 and 3 have their 1 entries in the rightmost subcolumn. With this rightmost column effectively eliminated, we are left with the form of the Hardy paradox. %We note also that this family of no-signalling distributions has a supremum value of the \emph{paradoxical probability} (the maximum probability of a measurement witnessing a Hardy paradox) of $\nicefrac{1}{2}$. This is a large value compared to other known situations with a fixed number of outcomes, a fixed quantum dimension, and a fixed number of measurements: the paradoxical probability for Hardy's own construction is roughly 0.09 \cite{Hard1993}. The proof of this can be found in Appendix \ref{app}.
+We see that in some sense this can be thought of as a generalisation of Hardy's paradox. The third measurement row acts to convert the two right-hand measurement columns into a single effective column identical to that of the standard Hardy paradox, since we see that in any deterministic, no-signalling grid containing the above specified ``1'' entry, we cannot have that both measurement columns 2 and 3 have their 1 entries in the rightmost subcolumn. With this rightmost column effectively eliminated, we are left with the form of the Hardy paradox. %We note also that this family of no-signalling distributions has a supremum value of the \emph{paradoxical probability} (the maximum probability of a measurement witnessing a Hardy paradox) of $\nicefrac{1}{2}$. This is a large value compared to other known situations with a fixed number of outcomes, a fixed quantum dimension, and a fixed number of measurements: the paradoxical probability for Hardy's own construction is roughly 0.09 \cite{Hard1993}. The proof of this can be found in Appendix \ref{app}.
 
 %This probability can be met by scenarios with two parties with access to $k$ different 2-outcome measurements, or by a generalised no-signalling theory \cite{Mans2017}. Quantum mechanically, this probability is given by $p|\cos(\theta(A, b^\perp)|^2$, where $\theta(A, b^\perp)$ is the angle subtended at the centre of the circle by $A$ and $b^\perp$, and $p$ is the ratio of the distance between $\rho$ and $a$ to the distance between $\rho$ and $A$. We see that we can move $\rho$ arbitrarily close to the centre of the circle, and $A$ arbitrarily close to $b^\perp$ to achieve a value of $\nicefrac12$ without changing the topology of the diagram. %move this proof to an appendix and make it rigorous.
 
 
 \section{\textsc{(2,3)-PossLoc} is \textbf{NP}-complete}
 
-We can see that $(l,m)$-\textsc{PossLoc} is in \textbf{NP}; to demonstrate that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. Such a witness is only polynomially-sized, since there are only polynomially many 1 entries and each data table is polynomially sized; that they sum to the table in question can also be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky, Gottlob, and Kolaitis showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(j,k)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
+We can see that $(l,m)$-\textsc{PossLoc} is in \textbf{NP}; to demonstrate that a data table is possibilistically local, we can specify a possibilistically local hidden variable model that accounts for each of the occurrences of the possible events (1 entries) within the problem instance. Such a witness is only polynomially-sized, since there are only polynomially many 1 entries and each data table is polynomially sized; that they sum to the table in question can also be checked in polynomial time. The rest of this section, then, will be a proof of \textbf{NP}-hardness. We note that since Mansfield and Fritz \cite{Mans2011} showed that \textsc{2-PossLoc} was in \textbf{P} and Abramsky, Gottlob, and Kolaitis showed that \text{3-PossLoc}  and the three-party generalisation of \textsc{2-PossLoc} were \textbf{NP}-complete, this leaves $(2,3)$-\textsc{PossLoc} as the only remaining case to have its complexity analysed.
 
 We will demonstrate that $(2,3)$-\textsc{PossLoc} is \textbf{NP}-complete. First, we will introduce, following Abramsky, Gottlob and Kolaitis, the concept of a robust satisfiability problem; we will then demonstrate the \textbf{NP}-completeness of a specific family of robust satisfaction problems, and show a polynomial-time embedding of such problems into $(2,3)$-\textsc{PossLoc}.
 
@@ -290,7 +297,7 @@ f(l_1\cup l_2 \vee  \circ  l_3) = (l_1\vee l_2 \vee \circ l_3 \vee \neg x),
 \begin{equation}
 f(\neg l_1\vee\neg l_2 \vee \circ  l_3) = (\neg l_1\cup\neg l_2 \vee \circ  l_3 \vee  y),
 \end{equation}
-in which the $\circ$ symbol is being used to denote the presence or absence of a $\neg$ symbol. By the pigeonhole principle, each clause must contain either at least two positive literals, or at least two negated literals, and so $f$ is total. We note that now, every clause of $C'=\bigwedge_i f(c_i)$ contains at least one positive literal and at least one negative literal, and so $C'$ is both 0-valid and 1-valid.
+in which the $\circ$ symbol is being used to denote the presence or absence of a $\neg$ symbol, and should be taken as constant across instances of the same variable within the equations. By the pigeonhole principle, each clause must contain either at least two positive literals, or at least two negated literals, and so $f$ is total. We note that now, every clause of $C'=\bigwedge_i f(c_i)$ contains at least one positive literal and at least one negative literal, and so $C'$ is both 0-valid and 1-valid.
 
 We note that it is possible now to convert this 4-SAT instance back to a \textsc{3-SAT} instance by the following procedure, mapping each clause to a pair of equisatisfiable clauses (which we will refer to as an effective clause):
 \begin{equation}
@@ -302,9 +309,9 @@ We note that it is possible now to convert this 4-SAT instance back to a \textsc
 
  We note also that this adjustment maintains 0-validity and 1-validity, since we can choose an order on the $\{\circ l_i\}$ such that each of the two clauses in the effective clause contain a positive and a negative literal. We note that since each effective clause contains either $\neg x$ or $y$, setting $x$ to 0 and $y$ to 1 leads to a satisfying assignment for any assignment choices of the other variables. 
 
-We can now verify that this transformed scenario is \textsc{2-Robust}ly satisfiable if and only if our original \textsc{3-SAT} instance was satisfiable. We will consider the possibilities on a case-by-case basis, depending on whether or not the variables $x$ or $y$ have been assigned valuations of 1 and 0 respectively:
+We can now verify that this transformed instance is \textsc{2-Robust}ly satisfiable if and only if our original \textsc{3-SAT} instance was satisfiable. We will consider the possibilities on a case-by-case basis, depending on whether or not the variables $x$ or $y$ have been assigned valuations of 1 and 0 respectively:
 \begin{enumerate}
-\item If neither $x$ is fixed to 1 or $y$ is fixed to 0, then we set $x$ to 0 and $y$ to 1. As mentioned above, this yields a satisfying assignment. If one or more $z$ has been assigned a value, we may need to assign some $l_i$ to make the affected clauses valid. Since this affects at most two clauses it can be seen that it is always possible to satisfy such a modified pair of clauses.
+\item If neither $x$ is fixed to 1 nor $y$ is fixed to 0, then we set $x$ to 0 and $y$ to 1. As mentioned above, this yields a satisfying assignment. If one or more $z$ has been assigned a value, we may need to assign some $l_i$ to make the affected clauses valid. Since this affects at most two clauses it can be seen that it is always possible to satisfy such a modified pair of clauses.
 
 \item If exactly one of $x$ is fixed to 1 or $y$ is fixed to 0, then, removing all instances of the $\neg x$ or $y$ literals respectively still leaves the instance either 0-valid or 1-valid, and so the instance is satisfiable by definition.
 
@@ -313,11 +320,11 @@ We can now verify that this transformed scenario is \textsc{2-Robust}ly satisfia
 Therefore, since \textsc{3-SAT} is \textbf{NP}-hard, so is \textsc{2-Robust 0-valid 1-valid 3-SAT}. It is in \textbf{NP} since there are only $O(n^2)$ different pairs of variables to set, and so the witness size to demonstrate a set of assignments that display robustness is still only polynomially sized.  Hence,  \textsc{2-Robust 0-valid 1-valid 3-SAT} is \textbf{NP}-complete.
 
 \end{proof}
-We note that a stronger version of this result was independently derived by Ham \ref{Ham2017}.
+We note that a stronger version of this result was independently derived by Ham \cite{Ham2017}.
 \begin{cor}
 \textsc{2-Robust 3-SAT} is \textbf{NP}-complete.
 \end{cor}
-We note now that we will in fact only need the fact that \textsc{2-Robust 3-SAT} is \textbf{NP}-complete for the rest of this proof; the motivation for having proven that the \textsc{0-valid 1-valid} is also \textbf{NP}-complete will become apparent when considering which of these possibility tables are realisable within quantum mechanic in Section \label{QR}.
+We note now that we will in fact only need the fact that \textsc{2-Robust 3-SAT} is \textbf{NP}-complete for the rest of this proof; the motivation for having proven that the \textsc{0-valid 1-valid} is also \textbf{NP}-complete will become apparent when considering which of these possibility tables are realisable within quantum mechanics in Section \ref{QR}.
 
 \begin{lem}\label{nplem}
 There is a polynomial-time embedding of \textsc{2-Robust 3-SAT} into \textsc{(2,3)-PossLoc}.
@@ -371,7 +378,7 @@ depending on whether the variable is the first, second, or third variable in the
  \end{equation*}
 depending on whether the variable is the first, second, or third variable in the clause with respect to our variable ordering.
 \end{itemize}
-We can see that choices of subrow in a measurement row is equivalent to an assignment of that variable, and that the clause structure effectively bans the assignment disallowed by that specific clause, for example the clause $(x_1 \vee x_2 \vee x_3)$ corresponds to the possibility table
+We can see that the choice of subrow in a measurement row correspond to an assignment of the associated variable, and that the clause structure effectively bans the assignment disallowed by that specific clause, for example the clause $(x_1 \vee x_2 \vee x_3)$ corresponds to the possibility table
 \begin{equation*}
 \begin{array}{c  | c c  c|}
 \hline
@@ -383,7 +390,7 @@ x_3=0& 1 & 1 & 0\\
 x_3=1& 1 & 1& 1 \\ \hline
  \end{array}
  \end{equation*}
-We see we cannot simultaneously assign a 1 to each of the top subrows as part of a deterministic grid. It now only remains to be shown that choosing a specific ``1'' instance, which needs to be extended to a deterministic grid, is the equivalent of fixing at most two variable assignments in the embedded \textsc{3-SAT} instance. We note that choosing any ``1'' instance fixes the valuation of the variable associated with its measurement row; the ``1'' is in some measurement subrow and corresponds to a value assignment for that variable. Additionally, each measurement subcolumn has exactly one ``0'' instance by construction: if this ``0'' instance is not in the same measurement row as the chosen ``1'' entry, this also fixes a variable assignment for the measurement row containing the ``0'' entry. In the example directly above, if the bottom-left ``1'' is chosen, then we see from the table that this is equivalent to asking that $x_3=1$, $x_1=1$. Therefore this construction constitutes a polynomial-time reduction from \textsc{2-Robust 3-SAT} to $(2,3)$\textsc{-PossLoc}.
+We see we cannot simultaneously assign a 1 to each of the top subrows as part of a deterministic grid. It now only remains to be shown that choosing a specific ``1'' instance, which needs to be extended to a deterministic grid, is the equivalent of fixing at most two variable assignments in the embedded \textsc{3-SAT} instance. We note that choosing any ``1'' entry fixes the valuation of the variable associated with its measurement row; the ``1'' is in some measurement subrow and corresponds to a value assignment for that variable. Additionally, each measurement subcolumn has exactly one ``0'' entry by construction: if this ``0'' instance is not in the same measurement row as the chosen ``1'' entry, this also fixes a variable assignment for the measurement row containing the ``0'' entry. In the example directly above, if the bottom-left ``1'' is chosen, then we see from the table that this is equivalent to asking that $x_3=1$, $x_1=1$. Therefore this construction constitutes a polynomial-time reduction from \textsc{2-Robust 3-SAT} to $(2,3)$\textsc{-PossLoc}.
 
 
 %We, then, need only to answer the question of the necessary and sufficient nature of \textsc{2-Robust}ness; we note that choosing a specific 1 to complete to a grid represents therefore an assignment of one variable, and the structure of the table then might result in the forced selection of another variable's assignment, if there is a 0 in the same subcolumn as the selected 1. Therefore by the same logic as before, the \textsc{(2,3)-PossLoc} decision problem is \textbf{NP}-complete. %Rewrite this paragraph to be more helpful.
@@ -398,15 +405,30 @@ Thus far in the paper we have cared only about whether or not a given table was 
 
 \begin{thm}
 All the quantumly accessible instances of the above \textsc{(2,3)-PossLoc} construction in which the party with three-outcome measurements has access only to a 2-dimensional quantum system are 0-valid and 1-valid under a variable renaming that can be calculated in linear time.
+
+%if it hits a point, then choose some point on the great circle that was OK
+%stick an axis through that point and rotate the GC by epsilon
+%if THAT hits a point, rotate it back eps/2
+%continue until you have a good hyperplane
+%each point that you hit must be totally unique so you can only hit all n of the points in the worst case so it's O(n)
+%... i'm not sure i want this in the paper it's too stupid but a reviewer has asked me to justify why i claimed that this bit of an algorithm was ok in linear time
+%reword this theorem maybe
 \end{thm}
 \begin{proof}
-Each measurement row corresponds to a two-outcome measurement. Without loss of generality, we can take these to be projective measurements since any two-outcome POVM is a convex mixture of such projectors. Since the possibility table would then be a statistical mixture of two or more other tables, noting that the statistical mixture of two local tables is always local, if there exists a quantum mechanically accessible table using POVMs for measurement choices for Alice, there must exist one using PVMs. If our entangled state is pure, which it has to be in order for there to be any impossible events, then this means that each outcome steers Bob's system to one of two pure states that convexly mix to Bob's reduced state.
+Each measurement row corresponds to a two-outcome measurement. Without loss of generality, we can take these to be projective measurements since any two-outcome POVM is a convex mixture of such projectors. Since the possibility table would then be a statistical mixture of two or more other tables, noting that the statistical mixture of two local tables is always local, if there exists a quantum mechanically accessible table using POVMs for measurement choices for Alice, there must exist one using PVMs. If our entangled state is pure, then this means that each outcome steers Bob's system to one of two pure states that convexly mix to Bob's reduced state.
 
 We note that each measurement column corresponds to a three-element POVM, and as such the hyperplane that is the convex hull of each triple contains the origin. Additionally, these POVM elements have an additional geometrical constraint: the POVM element with a 0 entry when $x_i=0$, say, must be orthogonal to the state to which Bob is steered when he gets the outcome $x_i=0$. This restricts each of these elements to be proportional to the projector onto the unique element orthogonal to the steered states.
 
-We note that each variable is associated with two POVM elements, one representing positive occurrences of the variable, the other representing the negative occurrences of the variable; since the union of the supports of such a pair is the whole Hilbert space, at least one of these must have support in our chosen hypersphere and we choose one such POVM element to represent the positive occurrences. Now, if we chose our hemi-hypersphere such that no POVM elements lie on its equator, which is always possible since there are only finitely many POVM elements, then we see that each triple must have at least one POVM element from that half of the Hilbert space. Each clause therefore contains at least one positively-represented variable and so the all-true assignment of the variables is a satisfying assignment. Additionally, the opposite holds and so the all-false assignment of the variables is satisfied also after this transformation has taken place. %Make this paragraph more clear.
+We note that each variable is associated with two POVM elements, one representing positive occurrences of the variable, the other representing the negative occurrences of the variable; since the union of the supports of such a pair is the whole Hilbert space, at least one of these must have support in our chosen hypersphere and we choose one such POVM element to represent the positive occurrences. Now, if we chose our hemi-hypersphere such that no POVM elements lie on its equator, which is always possible since there are only finitely many POVM elements, then we see that each triple must have at least one POVM element from that half of the Hilbert space. Each clause therefore contains at least one positively-represented variable and so the all-true assignment of the variables is a satisfying assignment. Additionally, the opposite holds and so the all-false assignment of the variables is satisfied also after this transformation has taken place.
+
+This calculation can be done in linear time exactly if we can find a great circle of the hypersphere that does not go through any point in linear time. To do this, take any axis of the sphere that does not go through a point, any set of $n+1$ such axes must contain one that does not meet a point, and consider a set of $n+1$ great circles that lie along this axis. Since such great circles share only their intersection points at each end of the axis, at most $n$ can contain one of our chosen points and so one must contain none.
 \end{proof}
-We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We have seen that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard; we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem, but that we can embed \emph{some} \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: for instance, one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here. 
+We note that since our reduction in Lemma \ref{nplem} was from a robust version of this problem, this proof alone does not demonstrate that the quantum realisation is not \textbf{NP}-complete; however it does demonstrate that we have access only to a very restricted set of problems we can embed, and therefore the hardness results of the previous section do not automatically carry through into the quantumly-accessible world. We have seen that when robustness is introduced into the mix, even simple problems can become \textbf{NP}-hard; we cannot make any assumptions about the difficulty of 2-robust variants of decision problems based on the difficulty of the underlying problem, but that we can embed \emph{some} \textsc{2-Robust 0-valid 1-valid 3-SAT} problems into the quantum formalism. We note however that an arbitrary instance cannot be embedded: for instance, one can show that the array shown in Figure \ref{badarray} is ruled out by the second tier of the NPA-hierarchy \cite{Nava2008}, which is a heirarchy of semidefinite programs to test whether a given probability distribution is quantum-mechanically realisable: rejection at any tier of the hierarchy constitutes a proof that it is not. The proof is merely by computation and will not be presented here, however the following proposition holds in general:
+
+\begin{prop}The array demonstrateed in Figure \ref{badarray} is not possible to create in any quantum dimension and any realisation of measurement outcomes.
+\end{prop}
+
+In general, however, increasing the quantum dimension of the underlying system can lead to a strict increase in the number of available tables as long as $d<\min(l^2,m^2)$. That there is no advantage to increasing $d>\min(l^2,m^2)$ can be seen by considering a Schmidt decomposition of the underlying state, and that it strictly increases the number of available tables can be seen by the fact that a subtable with only $k$ 1 entries, in a table in which no measurement subrow or subcolumn consists entirely of zeroes, is only possible when the quantum dimension $d$ satsifies $d\geq lm -k+1$. %This is getting a bit definition-dependent.. consider rewording or even removing.
 \begin{figure}
 \begin{equation*} 
 \begin{array}{  | c c  c| c c c|}
@@ -419,12 +441,12 @@ We note that since our reduction in Lemma \ref{nplem} was from a robust version 
  1 & 1& 1 &1 & 1 & 0 \\ \hline
  \end{array}
  \end{equation*} 
-\caption{This table of possibilities, which corresponds to the \textsc{3-SAT} instance $(x_1\wedge x_2 \wedge x_3)\vee (x_1\wedge x_2 \wedge \neg x_3)$ can be shown to be unrealisable quantum mechanically by invoking the NPA heirarchy.}
+\caption{This table of possibilities, which corresponds to the \textsc{3-SAT} instance $(x_1\wedge x_2 \wedge x_3)\vee (x_1\wedge x_2 \wedge \neg x_3)$ can be shown to be unrealisable quantum mechanically, for example by invoking the NPA heirarchy.}
 \label{badarray}
 \end{figure}
  
 Having considered some restrictions on which \textsc{3-SAT} instances can be embedded into \textsc{(2,3)-PossLoc}, we will now present a construction that enables a reasonably large class of \textsc{3-SAT} instances to be embedded. We will consider the case in which our projective measurements act on a qubit, and are additionally confined to a single plane through the Bloch sphere. It is possible that relaxing either of these assumptions could allow more instances to be embedded, however this is not clear: moving from a two-dimensional to a higher-dimensional quantum system could allow more flexibility with regards to the geometry of the projectors, but since our measurements can only have two outcomes, having more dimensions causes the creation of impossible events to be more difficult; likewise moving from a system in which all the projectors are coplanar makes it harder for impossible events to be created from the projectors since for a qubit at least, we need three coplanar vectors to form a valid POVM. 
-We note that the array in Figure \ref{badarray} is not possible in this situation, since if projectors $\{P_1,P_2,P_3\}$ in a two-dimensional Hilbert space have the identity projector in their convex hull, then the set $\{P_1,P_2, P_3^\perp\}$ does not unless $P_1=P_2^\perp$. In this situation, they cannot form a proper POVM alongside another nonzero element, and so this array is not possible to create in any quantum dimension and any realisation of measurement outcomes.
+We note that the array in Figure \ref{badarray} is, in particular, not achievable in this situation, since if projectors $\{P_1,P_2,P_3\}$ in a two-dimensional Hilbert space have the identity projector in their convex hull, then the set $\{P_1,P_2, P_3^\perp\}$ does not unless $P_1=P_2^\perp$. In this situation, they cannot form a proper POVM alongside another nonzero element.
 
 \begin{figure}[h]
 \centering
@@ -459,9 +481,9 @@ We note that the array in Figure \ref{badarray} is not possible in this situatio
 \label{Basicdiagram}
 \end{figure}
 
-We will draw inspiration for our projector geometry from the novel possibilistic nonlocality scenario we introduced in section \ref{dpandincompleteness}, and illustrated in figure \ref{steer}. 
+We will draw inspiration for our projector geometry from the novel possibilistic nonlocality scenario we illustrated in Figure \ref{steer} and presented in Figure \ref{novelArray}. 
 
-For diagrammatic clarity, in this section we will adopt a different representation for our diagrams to the previous section. We will consider the scenario in which Alice and Bob share a pure, entangled state and so once again, we will consider an equatorial slice of the Bloch sphere, and the reduced state for Bob is a point, $\rho$, within the circle. Any pair of points on the edge of the circle, the straight line through which goes through the point $\rho$ constitute a pair of states to which Bob can be steered (we will call this a steering pair); that is, there exists a measurement row such that if the event corresponding to one subcolumn is observed by Alice, Bob's system is left in one of those states, and if the other is observed Bob's system is left in the other. The departure from our previous notation comes with how we will represent POVMs. Each POVM element, which in this section will be proportional to a projector $\ketbra{\psi}$, will be shown on the equatorial Bloch plane as being in the location corresponding to the orthogonal projection $\ketbra{\psi^\perp}$. The reason for this is that in this representation of the system, when the same point on the circle is part of a POVM and a steering pair, the possibility at the intersection of the relevant measurement subrow and measurement subcolumn will be 0; Bob's system is left in a state $\ket{\psi^\perp}$ and the POVM element is proportional to $\ket{\psi}$.
+For diagrammatic clarity, in this section we will adopt a slight representational change for our diagrams, compared to the previous section. We will consider the scenario in which Alice and Bob share a pure, entangled state and so once again, we will consider an equatorial slice of the Bloch sphere, and the reduced state for Bob is a point, $\rho$, within the circle. Any pair of points on the edge of the circle, the straight line through which goes through the point $\rho$ constitute a pair of states to which Bob can be steered (we will call this a steering pair); that is, there exists a measurement row such that if the event corresponding to one subcolumn is observed by Alice, Bob's system is left in one of those states, and if the other is observed Bob's system is left in the other. The departure from our previous notation comes with how we will represent POVMs. Each POVM element, which in this section will be proportional to a projector $\ketbra{\psi}$, will be shown on the equatorial Bloch plane as being in the location corresponding to the orthogonal projection $\ketbra{\psi^\perp}$. The reason for this is that in this representation of the system, when the same point on the circle is part of a POVM and a steering pair, the possibility at the intersection of the relevant measurement subrow and measurement subcolumn will be 0; Bob's system is left in a state $\ket{\psi^\perp}$ and the POVM element is proportional to $\ket{\psi}$.
 
 %Any triple-outcome measurement for Bob will be enacted as a triple of projectors which include the identity operator in their convex hull. The two-outcome measurement is chosen such that the projector for the measurement subrow with the desired 0 steers the state into the one \emph{orthogonal} to the projector assigned to relevant measurement subcolumn. This is a different choice of representation than the one used earlier, but will be adopted now for diagrammatic clarity. Explicitly, our embedding has to conform to the following geometric restrictions:
 
@@ -475,7 +497,7 @@ For diagrammatic clarity, in this section we will adopt a different representati
 \item An impossible event happens when the point corresponding to that measurement subcolumn and the point corresponding to that measurment subrow are the same point. %This happens due to our new choice of state representation in our illustrations; the projector for a measurement subrow steers the state into the one orthogonal to the point that it is demarcated on the Bloch equator. The POVM element is proportional to the projector onto that point on the equator, and so when the two are represented by the same point, they are orthogonal which corresponds to an impossible event.
 \end{itemize}
 
-A specific quantum scenario will now be explored alongside a characterisation of some of the problem instances that can be embedded into it. Given a \textsc{3-SAT} instance, let us assign each variable a colour: blue or red. As can be seen in Figure \ref{Basicdiagram}, a clause consisting of a red positive literal, a red negative literal, and a blue negative literal, \emph{e.g.} $(\color{red}{l_1} \color{black}{\wedge} \color{red}{\neg l_2} \color{black}{\wedge} \color{blue}{\neg l_3})$, forms a valid POVM.
+A specific quantum scenario will now be explored alongside a characterisation of some of the problem instances that can be embedded into it. Given a \textsc{3-SAT} instance, let us assign each variable a colour: blue or red. Clauses with variables of certain colourings and negation status will be realisable with this construction. For example, as can be seen in Figure \ref{Basicdiagram}, a clause consisting of a red positive literal, a red negative literal, and a blue negative literal, \emph{e.g.} $(\color{red}{l_1} \color{black}{\wedge} \color{red}{\neg l_2} \color{black}{\wedge} \color{blue}{\neg l_3})$, forms a valid POVM. 
 
 If we add projectors for $x$ and $y$ that are close to the eigendecomposition of $\rho_B$ (distinguished only because we want them to have independent possibilities), as shown in Figure \ref{xydiag}, we can note that we can also support clauses of forms $(\color{red}{l_1} \color{black}{\vee} \color{blue}{ l_2} \color{black}{\vee} \neg x)$ or $(\color{red}{\neg l_1} \color{black}{\vee} \color{blue}{\neg l_2} \color{black}{\vee} y)$.
 
@@ -490,26 +512,26 @@ If we add projectors for $x$ and $y$ that are close to the eigendecomposition of
 \draw (1.5730879602280303,-3.6776887129535054)-- (-0.5438388074049572,3.962857473031342);
 \draw (-1.3609931181462014,3.7613425438742856)-- (3.296294172570832,-2.2659313157895093);
 \draw (0.,4.)-- (0.,-4.);
-\draw (0.003084062551349804,4.35) node[anchor=north west] {$x$};
-\draw (-0.4,4.35) node[anchor=north west] {$y$};
+\draw (0.003084062551349804,4.5) node[anchor=north west] {\large$x$};
+\draw (-0.4,4.5) node[anchor=north west] {\large$y$};
 \begin{scriptsize}
 \draw [fill=black] (0.,0.) circle (2.5pt);
-\draw [fill=black] (0.,2.) circle (1.5pt);
-\draw [fill=ffqqqq] (3.296294172570832,-2.2659313157895093) circle (1.5pt);
-\draw [fill=ffqqqq] (-1.3609931181462014,3.7613425438742856) circle (1.5pt);
-\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (1.5pt);
-\draw [fill=ffqqqq] (1.5730879602280303,-3.6776887129535054) circle (1.5pt);
-\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (1.5pt);
-\draw [fill=qqqqff] (-3.3,-2.27) circle (1.5pt);
-\draw [fill=qqqqff] (-1.57,-3.68) circle (1.5pt);
-\draw [fill=qqqqff] (0.54,3.96) circle (1.5pt);
-\draw [fill=qqqqff] (1.36,3.76) circle (1.5pt);
-\draw [fill=uuuuuu] (0.,-4.) circle (1.5pt);
-\draw [fill=uuuuuu] (0.,4.) circle (1.5pt);
+\draw [fill=black] (0.,2.) circle (3pt);
+\draw [fill=ffqqqq] (3.296294172570832,-2.2659313157895093) circle (3pt);
+\draw [fill=ffqqqq] (-1.3609931181462014,3.7613425438742856) circle (3pt);
+\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (3pt);
+\draw [fill=ffqqqq] (1.5730879602280303,-3.6776887129535054) circle (3pt);
+\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (3pt);
+\draw [fill=qqqqff] (-3.3,-2.27) circle (3pt);
+\draw [fill=qqqqff] (-1.57,-3.68) circle (3pt);
+\draw [fill=qqqqff] (0.54,3.96) circle (3pt);
+\draw [fill=qqqqff] (1.36,3.76) circle (3pt);
+\draw [fill=uuuuuu] (0.,-4.) circle (3pt);
+\draw [fill=uuuuuu] (0.,4.) circle (3pt);
 
 \end{scriptsize}
 \end{tikzpicture}}
-\caption{Adding in $x$ and $y$ projectors close to the eigendecomposition of $\rho_B$.}
+\caption{Adding in $x$ and $y$ projectors sufficiently close to the eigendecomposition of $\rho_B$, which is signified by the black circles. The positions of $x$ and $y$ are not shown individually due to their closeness to the eigendecomposition.}
 \label{xydiag}
 \end{figure}
 
@@ -527,7 +549,7 @@ $(\color{red}{\neg l_1}  \color{black}{\vee}\color{blue}{\neg l_2}  \color{black
 $(\color{red}{\neg z} \color{black}{\vee} \color{blue}{ l_2} \color{black}{\vee} \color{red}{\neg l_3}\color{black})\wedge(\color{blue}{z} \vee \color{red}{ l_1}\color{black}{\vee} \neg x)$, and by choosing the colouration $\color{red}{z}$ both the clauses have permitted forms.
 \end{itemize}
 We also clearly by symmetry have as permissible clauses the images of the ones above under an exchange of the colours blue and red. The rules seem to be, then, that in the original \textsc{3-SAT} each variable must be colourable either red or blue such that each clause contains at least one literal of each colour, and that the literal in each clause that is the only one of its colour must not have opposite sense to the other two literals. %Explain what "opposite sense" means.
-The author has been unable to produce a proof of \textbf{NP}-hardness or membership in \textbf{P} of such \textsc{3-SAT} instances. In any case, the quantum realisation forces a very strong geometrical relationship on clauses of the embedded instance.
+The author has been unable to produce a proof of \textbf{NP}-hardness or membership in \textbf{P} of such \textsc{3-SAT} instances. The scenario in consideration does not fall under the purview of Ham's trichotomy result,\cite{Ham2017} due to the restrictions being placed on which variables, not just which senses, can appear together in clauses. In any case, the quantum realisation forces a very strong geometrical relationship on clauses of the embedded instance.
  
  \section{Conclusion}
  
@@ -535,7 +557,7 @@ The author has been unable to produce a proof of \textbf{NP}-hardness or members
 
 \section*{Acknowledgements}
 
-I would like to thank Terry Rudolph and Georg Gottlob for multiple helpful discussions, and acknowledge support from Cambridge Quantum Computing Limited and from EPSRC \emph{via} the Centre for Doctoral Training in Controlled Quantum Dynamics.
+I would like to thank Terry Rudolph and Georg Gottlob for multiple helpful discussions; and my anonymous reviewers for their comprehensive efforts, which have enabled me to significantly improve this article. I acknowledge support from Cambridge Quantum Computing Limited and from EPSRC \emph{via} the Centre for Doctoral Training in Controlled Quantum Dynamics.
 
 \bibliography{/Users/andrewsimmons/Documents/Latex/Bib/bibliography}{}
 \bibliographystyle{plain}
