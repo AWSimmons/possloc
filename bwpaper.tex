@@ -465,19 +465,28 @@ We note that the array in Figure \ref{badarray} is, in particular, not achievabl
 \draw [dash pattern=on 3pt off 3pt] (1.5730879602280303,-3.6776887129535054)-- (-1.3609931181462014,3.7613425438742856);
 \draw [decorate,decoration={brace,amplitude=3pt},xshift=0pt,yshift=0pt] (-4,3.5) -- (-4,4) node [black,midway,xshift=-1.cm,yshift=0.2cm] { Positive} node [black,midway,xshift=-1.cm,yshift=-0.2cm] { Literals} ;
 \draw [decorate,decoration={brace,amplitude=10pt},xshift=0pt,yshift=0pt] (-4,-4) -- (-4,-2) node [black,midway,xshift=-1.cm,yshift=0.2cm] { Negative} node [black,midway,xshift=-1.cm,yshift=-0.2cm] { Literals} ;
-\begin{scriptsize}
+
 \draw [fill=black] (0.,0.) circle (2.5pt);
 \draw [fill=black] (0.,2.) circle (1.5pt);
-\draw [fill=ffqqqq] (3.296294172570832,-2.2659313157895093) circle (4pt);
-\draw [fill=ffqqqq] (-1.3609931181462014,3.7613425438742856) circle (4pt);
-\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (4pt);
-\draw [fill=ffqqqq] (1.5730879602280303,-3.6776887129535054) circle (4pt);
-\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (4pt);
-\draw [fill=qqqqff] (-3.3,-2.27) circle (4pt);
-\draw [fill=qqqqff] (-1.57,-3.68) circle (4pt);
-\draw [fill=qqqqff] (0.54,3.96) circle (4pt);
-\draw [fill=qqqqff] (1.36,3.76) circle (4pt);
-\end{scriptsize}
+\draw [fill=gray] (3.296294172570832,-2.2659313157895093) circle (4pt);
+\draw [fill=gray] (3.5,-2.5) node {Red};
+\draw [fill=gray] (-1.3609931181462014,3.7613425438742856) circle (4pt);
+\draw [fill=gray] (-1.6,4) node {Red};
+\draw [fill=gray] (-0.5438388074049572,3.962857473031342) circle (4pt);
+\draw [fill=gray] (-.6,4.2) node { Red};
+\draw [fill=gray] (1.5730879602280303,-3.6776887129535054) circle (4pt);
+\draw [fill=gray] (1.8,-3.95) node { Red};
+\draw [fill=gray] (-0.5438388074049572,3.962857473031342) circle (4pt);
+\draw [fill=gray] (0.65,4.2) node {Blue};
+\draw [fill=gray] (-3.3,-2.27) circle (4pt);
+\draw [fill=gray] (-3.5,-2.5) node {Blue};
+\draw [fill=gray] (0.54,3.96) circle (4pt);
+\draw [fill=gray] (3.5,-2.5) node { Red};
+\draw [fill=gray] (1.36,3.76) circle (4pt);
+\draw [fill=gray] (1.5,4) node {Blue};
+\draw [fill=gray] (-1.5730879602280303,-3.6776887129535054) circle (4pt);
+\draw [fill=gray] (-1.6,-4) node {Blue};
+
 \end{tikzpicture}}
 \caption{A red positive literal, a red negative literal and a blue negative literal form a valid POVM.}
 \label{Basicdiagram}
@@ -499,9 +508,9 @@ For diagrammatic clarity, in this section we will adopt a slight representationa
 \item An impossible event happens when the point corresponding to that measurement subcolumn and the point corresponding to that measurment subrow are the same point. %This happens due to our new choice of state representation in our illustrations; the projector for a measurement subrow steers the state into the one orthogonal to the point that it is demarcated on the Bloch equator. The POVM element is proportional to the projector onto that point on the equator, and so when the two are represented by the same point, they are orthogonal which corresponds to an impossible event.
 \end{itemize}
 
-A specific quantum scenario will now be explored alongside a characterisation of some of the problem instances that can be embedded into it. Given a \textsc{3-SAT} instance, let us assign each variable a colour: blue or red. Clauses with variables of certain colourings and negation status will be realisable with this construction. For example, as can be seen in Figure \ref{Basicdiagram}, a clause consisting of a red positive literal, a red negative literal, and a blue negative literal, \emph{e.g.} $(\color{red}{l_1} \color{black}{\wedge} \color{red}{\neg l_2} \color{black}{\wedge} \color{blue}{\neg l_3})$, forms a valid POVM. 
+A specific quantum scenario will now be explored alongside a characterisation of some of the problem instances that can be embedded into it. Given a \textsc{3-SAT} instance, let us assign each variable a colour: blue or red. Clauses with variables of certain colourings and negation status will be realisable with this construction. For example, as can be seen in Figure \ref{Basicdiagram}, a clause consisting of a red positive literal, a red negative literal, and a blue negative literal, \emph{e.g.} $(l_1^R \color{black}{\wedge} \neg l_2^R \color{black}{\wedge} \neg l_3^B)$, forms a valid POVM. 
 
-If we add projectors for $x$ and $y$ that are close to the eigendecomposition of $\rho_B$ (distinguished only because we want them to have independent possibilities), as shown in Figure \ref{xydiag}, we can note that we can also support clauses of forms $(\color{red}{l_1} \color{black}{\vee} \color{blue}{ l_2} \color{black}{\vee} \neg x)$ or $(\color{red}{\neg l_1} \color{black}{\vee} \color{blue}{\neg l_2} \color{black}{\vee} y)$.
+If we add projectors for $x$ and $y$ that are close to the eigendecomposition of $\rho_B$ (distinguished only because we want them to have independent possibilities), as shown in Figure \ref{xydiag}, we can note that we can also support clauses of forms $(l_1^R \color{black}{\vee}  l_2^B \color{black}{\vee} \neg x)$ or $(\neg l_1^R \color{black}{\vee} \neg l_2^B \color{black}{\vee} y)$.
 
 \begin{figure}[h]
 \centering
@@ -519,17 +528,17 @@ If we add projectors for $x$ and $y$ that are close to the eigendecomposition of
 \begin{scriptsize}
 \draw [fill=black] (0.,0.) circle (2.5pt);
 \draw [fill=black] (0.,2.) circle (3pt);
-\draw [fill=ffqqqq] (3.296294172570832,-2.2659313157895093) circle (3pt);
-\draw [fill=ffqqqq] (-1.3609931181462014,3.7613425438742856) circle (3pt);
-\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (3pt);
-\draw [fill=ffqqqq] (1.5730879602280303,-3.6776887129535054) circle (3pt);
-\draw [fill=ffqqqq] (-0.5438388074049572,3.962857473031342) circle (3pt);
-\draw [fill=qqqqff] (-3.3,-2.27) circle (3pt);
-\draw [fill=qqqqff] (-1.57,-3.68) circle (3pt);
-\draw [fill=qqqqff] (0.54,3.96) circle (3pt);
-\draw [fill=qqqqff] (1.36,3.76) circle (3pt);
-\draw [fill=uuuuuu] (0.,-4.) circle (3pt);
-\draw [fill=uuuuuu] (0.,4.) circle (3pt);
+\draw [fill=gray] (3.296294172570832,-2.2659313157895093) circle (3pt);
+\draw [fill=gray] (-1.3609931181462014,3.7613425438742856) circle (3pt);
+\draw [fill=gray] (-0.5438388074049572,3.962857473031342) circle (3pt);
+\draw [fill=gray] (1.5730879602280303,-3.6776887129535054) circle (3pt);
+\draw [fill=gray] (-0.5438388074049572,3.962857473031342) circle (3pt);
+\draw [fill=gray] (-3.3,-2.27) circle (3pt);
+\draw [fill=gray] (-1.57,-3.68) circle (3pt);
+\draw [fill=gray] (0.54,3.96) circle (3pt);
+\draw [fill=gray] (1.36,3.76) circle (3pt);
+\draw [fill=black] (0.,-4.) circle (3pt);
+\draw [fill=black] (0.,4.) circle (3pt);
 
 \end{scriptsize}
 \end{tikzpicture}}
@@ -540,15 +549,15 @@ If we add projectors for $x$ and $y$ that are close to the eigendecomposition of
 If we want to perform the transformation procedure in theorem \ref{rob3sat}, we can see from these constructions that the clauses in the initial \textsc{3-SAT} instance can have one of the following forms:
 
 \begin{itemize}
-\item $(\color{red}{ l_1} \color{black}{\vee} \color{red}{l_2} \color{black}{\vee} \color{blue}{l_3}\color{black} )$, by transforming it to the conjunction of clauses $(\color{red}{l_1}  \color{black}{\vee} \color{blue}{l_3}\color{black}{\vee} \color{black}{\neg z})\wedge(\color{black}{z}\color{black}{\vee} \color{red}{l_2}\color{black}{\vee} \neg x)$, with $z$ close to $x$.
+\item $( l_1^R \color{black}{\vee} l_2^R \color{black}{\vee} l_3^B\color{black} )$, by transforming it to the conjunction of clauses $(l_1^R  \color{black}{\vee} l_3^B\color{black}{\vee} \color{black}{\neg z})\wedge(\color{black}{z}\color{black}{\vee} l_2^R\color{black}{\vee} \neg x)$, with $z$ close to $x$.
 
-\item $(\color{red}{\neg l_1} \color{black}{\vee} \color{red}{\neg l_2} \color{black}{\vee} \color{blue}{\neg l_3}\color{black} )$, by transforming it to the conjunction of clauses $(\color{red}{\neg l_1}  \color{black}{\vee} \color{blue}{\neg l_3}\color{black}{\vee} \color{black}{z})\wedge(\color{black}{\neg z}\color{black}{\vee} \color{red}{\neg l_2}\color{black}{\vee} y)$, with all clauses of allowed forms if we choose the colouring $\color{blue}{z}$.
+\item $(\neg l_1^R \color{black}{\vee} \neg l_2^R \color{black}{\vee} \neg l_3^B\color{black} )$, by transforming it to the conjunction of clauses $(\neg l_1^R  \color{black}{\vee} \neg l_3^B\color{black}{\vee} \color{black}{z})\wedge(\color{black}{\neg z}\color{black}{\vee} \neg l_2^R\color{black}{\vee} y)$, with all clauses of allowed forms if we choose the colouring $z^B$.
 
-\item $(\color{red}{\neg l_1} \color{black}{\vee} \color{blue}{\neg l_2} \color{black}{\vee} \color{red}{l_3} \color{black})$, by transforming it to 
-$(\color{red}{\neg l_1}  \color{black}{\vee}\color{blue}{\neg l_2}  \color{black}{\vee} \color{red}{z_2}   \color{black}) \wedge(\color{red}{\neg z_2}  \color{black}{\vee}  \color{blue}{\neg z_1} \color{black}{\vee}y)    \wedge    (\color{blue}{z_1} \color{black}{\vee}\color{red}{ l_3}  \color{black}{\vee} \neg x)$.
+\item $(\neg l_1^R \color{black}{\vee} \neg l_2^B \color{black}{\vee} l_3^R \color{black})$, by transforming it to 
+$(\neg l_1^R  \color{black}{\vee}\neg l_2^B  \color{black}{\vee} z_2^R   \color{black}) \wedge(\neg z_2^R  \color{black}{\vee}  \neg z_1^B \color{black}{\vee}y)    \wedge    (z_1^B \color{black}{\vee} l_3^R  \color{black}{\vee} \neg x)$.
 
-\item $(\color{red}{ l_1} \color{black}{\vee} \color{blue}{l_2} \color{black}{\vee} \color{red}{\neg l_3}\color{black} )$, since this becomes modified to 
-$(\color{red}{\neg z} \color{black}{\vee} \color{blue}{ l_2} \color{black}{\vee} \color{red}{\neg l_3}\color{black})\wedge(\color{blue}{z} \vee \color{red}{ l_1}\color{black}{\vee} \neg x)$, and by choosing the colouration $\color{red}{z}$ both the clauses have permitted forms.
+\item $( l_1^R \color{black}{\vee} l_2^B \color{black}{\vee} \neg l_3^R\color{black} )$, since this becomes modified to 
+$(\neg z^R \color{black}{\vee}  l_2^B \color{black}{\vee} \neg l_3^R\color{black})\wedge(z^B \vee  l_1^R\color{black}{\vee} \neg x)$, and by choosing the colouration $z^R$ both the clauses have permitted forms.
 \end{itemize}
 We also clearly by symmetry have as permissible clauses the images of the ones above under an exchange of the colours blue and red. The rules seem to be, then, that in the original \textsc{3-SAT} each variable must be colourable either red or blue such that each clause contains at least one literal of each colour, and that the literal in each clause that is the only one of its colour must not have opposite sense to the other two literals. %Explain what "opposite sense" means.
 The author has been unable to produce a proof of \textbf{NP}-hardness or membership in \textbf{P} of such \textsc{3-SAT} instances. The scenario in consideration does not fall under the purview of Ham's trichotomy result \cite{Ham2017}, due to the restrictions being placed on which variables, not just which senses, can appear together in clauses. In any case, the quantum realisation forces a very strong geometrical relationship on clauses of the embedded instance.
